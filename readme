@@ -1,0 +1,13 @@
+# stock price form:
+http://finance.yahoo.com/quote/%5EDJI/history?p=%5EDJI
+
+#name type:
+ex:
+
+start:2015/1/1
+end:2016/12/31
+for train
+
+filename:train_010115_to_123116
+
+#train vs test
