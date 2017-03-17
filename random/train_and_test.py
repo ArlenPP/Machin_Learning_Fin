@@ -49,7 +49,7 @@ for row in csv.DictReader(dowfile):
 dowfile.close()
 
 
-file = open('../../output/random/train-data','w')
+file1 = open('../../../output/random/train-data','w')
 
 
 for day in range(0,len(Open)-1,1):
@@ -67,7 +67,7 @@ for day in range(0,len(Open)-1,1):
 	#file.write(' 12:'+Open[day]+' 13:'+Close[day])
 	#file.write(' 14:'+Volume[day]+' 15:'+MA5[day]+' 16:'+MA10[day])
 	#file.write(' 17:'+High[day]+' 18:'+Low[day])
-	#file.write('\n')
+	file1.write('\n')
 
 
 Open = []
@@ -116,7 +116,7 @@ for row in csv.DictReader(dowfile2):
 	price_close.append(float(row['Close']))
 dowfile2.close()
 
-file2 = open('../../output/random/test-data','w')
+file2 = open('../../../output/random/test-data','w')
 
 
 for day in range(0,len(Open)-1,1):
