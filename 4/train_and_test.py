@@ -51,24 +51,25 @@ for row in csv.DictReader(dowfile):
 dowfile.close()
 
 
-file = open('../output/4/train-data','w')
+file = open('../../../output/4/train-data','w')
 
 
-for day in range(0,len(Open)-2,1):	
-		
-	
+for day in range(0,len(Open)-2,1):
+
+
 	if price_close[day+1]>price_open[day+1]:
 		a='1'
 	elif price_close[day+1]<=price_open[day+1]:
 		a='-1'
 
 	R1 = str((v_SMA5[day+1]-v_SMA5[day])/2)
-	
-	file.write(a+' 1:'+RSI6[day]+' 2:'+RSI12[day]+' 3:'+SMA5[day]+' 4:'+SMA10[day]+' 5:'+SMA20[day])
-	file.write(' 6:'+SMA60[day]+' 7:'+DIF[day]+' 8:'+ACD9[day]+' 9:'+OSC[day]+' 10:'+K[day]+' 11:'+D[day])
-	file.write(' 12:'+Open[day]+' 13:'+Close[day])
-	file.write(' 14:'+Volume[day]+' 15:'+MA5[day]+' 16:'+MA10[day])
-	file.write(' 17:'+High[day]+' 18:'+Low[day]+' 19:'+R1)
+
+    file.write(a+' 1:'+RSI6[day]+' 2:'+RSI12[day]+' 3:'+SMA5[day]+' 4:'+SMA10[day]+' 5:'+SMA20[day]+' 6:'SMA60[day])
+    file2.wirte(' 7:'+R1)
+	#file.write(' 7:'+DIF[day]+' 8:'+ACD9[day]+' 9:'+OSC[day]+' 10:'+K[day]+' 11:'+D[day])
+	#file.write(' 12:'+Open[day]+' 13:'+Close[day])
+	#file.write(' 14:'+Volume[day]+' 15:'+MA5[day]+' 16:'+MA10[day])
+	#file.write(' 17:'+High[day]+' 18:'+Low[day]+' 19:'+R1)
 	file.write('\n')
 
 
@@ -120,12 +121,12 @@ for row in csv.DictReader(dowfile2):
 	v_SMA5.append(float(row['SMA5']))
 dowfile2.close()
 
-file2 = open('../output/4/test-data','w')
+file2 = open('../../../output/4/test-data','w')
 
 
-for day in range(0,len(Open)-2,1):	
-		
-	
+for day in range(0,len(Open)-2,1):
+
+
 	if price_close[day+1]>price_open[day+1]:
 		a='1'
 	elif price_close[day+1]<=price_open[day+1]:
@@ -134,9 +135,10 @@ for day in range(0,len(Open)-2,1):
 	R1 = str((v_SMA5[day+1]-v_SMA5[day])/2)
 
 
-	file2.write(a+' 1:'+RSI6[day]+' 2:'+RSI12[day]+' 3:'+SMA5[day]+' 4:'+SMA10[day]+' 5:'+SMA20[day])
-	file2.write(' 6:'+SMA60[day]+' 7:'+DIF[day]+' 8:'+ACD9[day]+' 9:'+OSC[day]+' 10:'+K[day]+' 11:'+D[day])
-	file2.write(' 12:'+Open[day]+' 13:'+Close[day])
-	file2.write(' 14:'+Volume[day]+' 15:'+MA5[day]+' 16:'+MA10[day])
-	file2.write(' 17:'+High[day]+' 18:'+Low[day]+' 19:'+R1)
+    file2.write(a+' 1:'+RSI6[day]+' 2:'+RSI12[day]+' 3:'+SMA5[day]+' 4:'+SMA10[day]+' 5:'+SMA20[day]+' 6:'SMA60[day])
+    file2.wirte(' 7:'+R1)
+    #file2.write(' 7:'+DIF[day]+' 8:'+ACD9[day]+' 9:'+OSC[day]+' 10:'+K[day]+' 11:'+D[day])
+    #file2.write(' 12:'+Open[day]+' 13:'+Close[day])
+	#file2.write(' 14:'+Volume[day]+' 15:'+MA5[day]+' 16:'+MA10[day])
+	#file2.write(' 17:'+High[day]+' 18:'+Low[day]+' 19:'+R1)
 	file2.write('\n')
