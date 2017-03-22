@@ -91,7 +91,53 @@ for day in range(9,len(Open)-1,1):
 		b = str(number)
 		file.write(' '+b+':'+SMA60[day])
 
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file.write(' '+b+':'+MA5[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file.write(' '+b+':'+MA10[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file.write(' '+b+':'+DIF[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file.write(' '+b+':'+ACD9[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file.write(' '+b+':'+OSC[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file.write(' '+b+':'+K[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file.write(' '+b+':'+D[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file.write(' '+b+':'+RSI6[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file.write(' '+b+':'+RSI12[day])
+
 	file.write('\n')
+file.close()
 
 '''
 	file.write('\n')
@@ -163,7 +209,7 @@ for day in range(9,len(Open)-1,1):
 
 	file2.write(a)
 
-	number = 0
+		number = 0
 	for i in range(day,day-10,-1):
 		number++
 		b = str(number)
@@ -194,8 +240,54 @@ for day in range(9,len(Open)-1,1):
 		b = str(number)
 		file2.write(' '+b+':'+SMA60[day])
 
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file2.write(' '+b+':'+MA5[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file2.write(' '+b+':'+MA10[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file2.write(' '+b+':'+DIF[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file2.write(' '+b+':'+ACD9[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file2.write(' '+b+':'+OSC[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file2.write(' '+b+':'+K[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file2.write(' '+b+':'+D[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file2.write(' '+b+':'+RSI6[day])
+
+	for i in range(day,day-10,-1):
+		number++
+		b = str(number)
+		file2.write(' '+b+':'+RSI12[day])
 
 	file2.write('\n')
+file2.close()
+
 '''
 	file2.write(a+' 1:'+RSI6[day]+' 2:'+RSI12[day]+' 3:'+SMA5[day]+' 4:'+SMA10[day]+' 5:'+SMA20[day])
 	file2.write(' 6:'+SMA60[day]+' 7:'+DIF[day]+' 8:'+ACD9[day]+' 9:'+OSC[day]+' 10:'+K[day]+' 11:'+D[day])
