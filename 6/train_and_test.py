@@ -85,7 +85,7 @@ for day in range(5,len(Open)-1,1):
 		number+=1
 		b = str(number)
 		file.write(' '+b+':'+Volume[i])
-	
+
 
 	file.write('\n')
 file.close()
@@ -147,7 +147,7 @@ for row in csv.DictReader(dowfile2):
 	price_close.append(float(row['Close']))
 dowfile2.close()
 
-file2 = open('../../../output6/test-data','w')
+file2 = open('../../../output/6/test-data','w')
 
 
 for day in range(9,len(Open)-1,1):
