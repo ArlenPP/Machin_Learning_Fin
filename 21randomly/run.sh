@@ -1,4 +1,4 @@
-python train_and_test.py
+
 cp train-data test-data ../../../output/21
 cd ../../../output/21
 svm-scale -s train-data-scale-info train-data > train-data.scale
