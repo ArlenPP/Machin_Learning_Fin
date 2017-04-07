@@ -22,6 +22,7 @@ RSI6 = []
 RSI12 = []
 price_close= []
 price_open = []
+price_high = []
 
 dowfile = open('./train.csv','r')
 
@@ -46,6 +47,7 @@ for row in csv.DictReader(dowfile):
 	RSI12.append(str(float(row['RSI12'])))
 	price_open.append(float(row['Open']))
 	price_close.append(float(row['Close']))
+	price_high.append(float(row['High']))
 dowfile.close()
 
 
@@ -54,7 +56,7 @@ file = open('../../../output/28/train-data','w')
 
 for day in range(9,len(Open)-1,1):
 
-	if price_close[day+1]>price_open[day+1]+100:
+	if price_high[day+1]>price_open[day+1]+50:
 		a='1'
 	else :
 		a='-1'
@@ -170,6 +172,7 @@ RSI6 = []
 RSI12 = []
 price_close= []
 price_open = []
+price_high = []
 
 dowfile2 = open('./test.csv','r')
 
@@ -194,6 +197,7 @@ for row in csv.DictReader(dowfile2):
 	RSI12.append(str(float(row['RSI12'])))
 	price_open.append(float(row['Open']))
 	price_close.append(float(row['Close']))
+	price_high.append(float(row['High']))
 dowfile2.close()
 
 file2 = open('../../../output/28/test-data','w')
@@ -202,7 +206,7 @@ file2 = open('../../../output/28/test-data','w')
 for day in range(9,len(Open)-1,1):
 
 
-	if price_close[day+1]>price_open[day+1]+100:
+	if price_high[day+1]>price_open[day+1]+50:
 		a='1'
 	else :
 		a='-1'
