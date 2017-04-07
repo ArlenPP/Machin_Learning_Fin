@@ -56,7 +56,7 @@ for day in range(9,len(Open)-1,1):
 
 	if price_close[day+1]>price_open[day+1]+100:
 		a='1'
-	else price_close[day+1]<=price_open[day+1]:
+	else :
 		a='-1'
 	file.write(a)
 
@@ -204,7 +204,7 @@ for day in range(9,len(Open)-1,1):
 
 	if price_close[day+1]>price_open[day+1]+100:
 		a='1'
-	else price_close[day+1]<=price_open[day+1]:
+	else :
 		a='-1'
 
 	file2.write(a)
