@@ -58,7 +58,7 @@ file = open('../../../output/31/train-data','w')
 
 for day in range(9,len(Open)-1,1):
 
-	if price_high[day+1]=>price_open[day+1]+50:
+	if price_high[day+1]>=price_open[day+1]+50:
 		a='1'
 	elif price_low[day+1]+50<=price_open[day+1]:
 		a='-1'
@@ -211,7 +211,7 @@ file2 = open('../../../output/31/test-data','w')
 
 for day in range(9,len(Open)-1,1):
 
-	if price_high[day+1]=>price_open[day+1]+50:
+	if price_high[day+1]>=price_open[day+1]+50:
 		a='1'
 	elif price_low[day+1]+50<=price_open[day+1]:
 		a='-1'
