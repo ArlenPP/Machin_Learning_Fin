@@ -19,7 +19,8 @@ for row in csv.DictReader(test):
 	open.append(float(row['Open']))
 	close.append(float(row['Close']))
 
-
+sumbuy=0
+sumsell=0
 
 for i in range (len(open)-len(labels),len(labels),1):
 
