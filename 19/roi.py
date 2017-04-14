@@ -21,7 +21,7 @@ for row in csv.DictReader(test):
 
 
 
-for i in range (len(Open)-len(labels),len(labels),1):
+for i in range (len(open)-len(labels),len(labels),1):
 	print(Open[i])
 
 	
