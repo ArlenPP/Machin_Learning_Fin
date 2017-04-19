@@ -205,84 +205,84 @@ for day in range(10,len(Open)-30,1):
 		a='1'
 	elif price_close[day+30]<=price_open[day]:
 		a='-1'
-	file.write(a)
+	file2.write(a)
 
 	number = 0
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+Open[i])
+		file2.write(' '+b+':'+Open[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+Close[i])
+		file2.write(' '+b+':'+Close[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+SMA5[i])
+		file2.write(' '+b+':'+SMA5[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+SMA10[i])
+		file2.write(' '+b+':'+SMA10[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+SMA20[i])
+		file2.write(' '+b+':'+SMA20[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+SMA60[i])
+		file2.write(' '+b+':'+SMA60[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+MA5[i])
+		file2.write(' '+b+':'+MA5[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+MA10[i])
+		file2.write(' '+b+':'+MA10[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+DIF[i])
+		file2.write(' '+b+':'+DIF[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+ACD9[i])
+		file2.write(' '+b+':'+ACD9[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+OSC[i])
+		file2.write(' '+b+':'+OSC[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+K[i])
+		file2.write(' '+b+':'+K[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+D[i])
+		file2.write(' '+b+':'+D[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+RSI6[i])
+		file2.write(' '+b+':'+RSI6[i])
 
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file.write(' '+b+':'+RSI12[i])
-	file.write('\n')
+		file2.write(' '+b+':'+RSI12[i])
+	file2.write('\n')
 file2.close()
 
 '''
