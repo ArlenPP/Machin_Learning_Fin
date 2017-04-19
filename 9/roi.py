@@ -38,7 +38,7 @@ for i in range (0,len(labels),1):
 
 	walletmoney=walletmoney+sellmoney[i%30]
 
-	if(labels[i]==1):
+	if(labels[i]==-1):
 		if(walletmoney<open[i+10]):
 			outputmoney=outputmoney-(open[i+10]-walletmoney)
 			walletmoney=walletmoney+(open[i+10]-walletmoney) 
@@ -53,7 +53,7 @@ for i in range (0,len(labels),1):
 		x=x+profit
 		
 
-	elif(labels[i]==-1):
+	elif(labels[i]==1):
 		if(walletmoney<open[i+10]):
 			outputmoney=outputmoney-(open[i+10]-walletmoney)
 			walletmoney=walletmoney+(open[i+10]-walletmoney)
