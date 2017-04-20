@@ -63,8 +63,8 @@ for i in range (0,len(labels),1):
 		profit=number*(open[i+10]-close[i+10])
 		x=x+profit
 
-	#y=y+profit/open[i+10]
-	#print(open[i+10],close[i+10],x,y,outputmoney,walletmoney)
+	y=y+profit/open[i+10]
+	print(open[i+10],close[i+10],x,y,outputmoney,walletmoney)
 
 finialmoney=walletmoney+sellmoney-(-outputmoney)
 
