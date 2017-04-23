@@ -33,11 +33,12 @@ test_result = open('./test-result','r')
 #test_result = open('../../../output/33/test-result','r')
 test = open('./test.csv','r')
 
+'''
 
-''' read history option 請將檔案放在同一個資料夾裡面的folder which name is "option" '''
+# read history option 請將檔案放在同一個資料夾裡面的folder which name is "option" 
 
 file_data = [] #list of option.csv filename
-DATA_DIR = './option' #directory of option.csv
+DATA_DIR = '../../History_Option/history' #directory of option.csv
 
 
 def natural_key(string_):
@@ -56,7 +57,7 @@ totaloption.write("date,dateline,strike_price,callorput,open,high,close\n")
 for filename in file_data:
 	print(filename)
 
-	tmp = codecs.open('./option/'+filename,'r','big5')
+	tmp = codecs.open('../../History_Option/history/'+filename,'r','big5')
 	optionfile = tmp.read()
 
 
@@ -73,8 +74,8 @@ for filename in file_data:
 			totaloption.write(row['交易日期']+','+row['到期月份(週別)']+','+row['履約價']+','+x+','+row['開盤價']+','+row['最高價']+','+row['收盤價']+'\n')
 totaloption.close()
 
-'''read history option and make totaloption '''
-
+#read history option and make totaloption 
+'''
 
 ''' read labels '''
 for row in csv.DictReader(test_result,delimiter=' '):
@@ -130,7 +131,9 @@ for i in range(0,len(Labels),1):
 	for row in csv.DictReader(open('./totaloption.csv')):
 		
 		if (y==float(row['strike_price']) and Date[i+10]==row['date'] and date_after_month.strftime("%Y%m")==row['dateline']):
-			if(Labels[i]==1 and row['callorput']=='call'):
+			if(Labels[i]==0):
+				break
+			elif(Labels[i]==1 and row['callorput']=='call'):
 				if(float(row['open'])==0 or float(row['close'])==0):
 					break
 				if(walletmoney<float(row['open'])):
@@ -152,8 +155,8 @@ for i in range(0,len(Labels),1):
 				#調整賺進來的錢要存下來多少
 				
 				if(profit>0):
-					walletmoney=walletmoney+buymoney+4*profit/4
-					savemoney=savemoney+profit*0/4
+					walletmoney=walletmoney+buymoney+3*profit/4
+					savemoney=savemoney+profit*1/4
 				else:
 					walletmoney=walletmoney+sellmoney
 				
@@ -186,8 +189,8 @@ for i in range(0,len(Labels),1):
 				#調整賺進來的錢要存下來多少
 				
 				if(profit>0):
-					walletmoney=walletmoney+buymoney+4*profit/4
-					savemoney=savemoney+profit*0/4
+					walletmoney=walletmoney+buymoney+3*profit/4
+					savemoney=savemoney+profit*1/4
 				else:
 					walletmoney=walletmoney+sellmoney
 				
