@@ -38,8 +38,8 @@ DATA_DIR = './option' #directory of option.csv
 
 
 def natural_key(string_):
-    """See http://www.codinghorror.com/blog/archives/001018.html"""
-    return [int(s) if s.isdigit() else s for s in re.split(r'(\d+)', string_)]
+	"""See http://www.codinghorror.com/blog/archives/001018.html"""
+	return [int(s) if s.isdigit() else s for s in re.split(r'(\d+)', string_)]
 
 for filename in os.listdir(DATA_DIR):
 	if('.csv' in filename):
@@ -53,7 +53,7 @@ totaloption.write("date,dateline,strike_price,callorput,open,high,close\n")
 for filename in file_data:
 	print(filename)
 
-	tmp = codecs.open('./1/'+filename,'r','big5')
+	tmp = codecs.open('./option/'+filename,'r','big5')
 	optionfile = tmp.read()
 
 
@@ -132,22 +132,22 @@ for i in range(0,len(Labels),1):
 				buymoney=number*float(row['open'])
 				walletmoney=walletmoney-buymoney
 				if(float(row['high'])/float(row['open'])>=3):
-					sellmoney=number*float(row['open'])*3
+					sellmoney=number*(float(row['open'])*3-1)
 				else:
-					sellmoney=number*float(row['close'])
+					sellmoney=number*(float(row['close'])-1)
 
 				profit=sellmoney-buymoney
 				total_profit=total_profit+profit
 
-	            #調整賺進來的錢要存下來多少
+				#調整賺進來的錢要存下來多少
 				if(profit>0):
 					walletmoney=walletmoney+buymoney+2*profit/4
 					savemoney=savemoney+profit*2/4
 				else:
 					walletmoney=walletmoney+sellmoney
 
-	            print(walletmoney,outputmoney,profit)
-	            break
+				print (walletmoney,outputmoney,profit)
+				break
 			
 			elif(Labels[i]==-1 and row['callorput']=='put'):
 				if(float(row['open'])==0):
@@ -161,21 +161,21 @@ for i in range(0,len(Labels),1):
 				buymoney=number*float(row['open'])
 				walletmoney=walletmoney-buymoney
 				if (float(row['high'])/float(row['open'])>=3):
-					sellmoney=number*float(row['open'])*3
+					sellmoney=number*(float(row['open'])*3-1)
 				else:
-					sellmoney=number*float(row['close'])
+					sellmoney=number*(float(row['close'])-1)
 
 				profit=sellmoney-buymoney
 				total_profit=total_profit+profit
 
-	            #調整賺進來的錢要存下來多少
+				#調整賺進來的錢要存下來多少
 				if(profit>0):
 					walletmoney=walletmoney+buymoney+2*profit/4
 					savemoney=savemoney+profit*2/4
 				else:
 					walletmoney=walletmoney+sellmoney
 
-	            print(walletmoney,outputmoney,profit)
+				print(walletmoney,outputmoney,profit)
 				break
 			
 

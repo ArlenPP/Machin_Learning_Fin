@@ -16,6 +16,9 @@ Note: this will requires python-dateutil. to install it you need to run in linux
 
 Labels= []
 Open = []
+Close = []
+High = []
+Low = []
 Date = []
 
 option_open = []
@@ -38,8 +41,8 @@ DATA_DIR = './option' #directory of option.csv
 
 
 def natural_key(string_):
-    """See http://www.codinghorror.com/blog/archives/001018.html"""
-    return [int(s) if s.isdigit() else s for s in re.split(r'(\d+)', string_)]
+	"""See http://www.codinghorror.com/blog/archives/001018.html"""
+	return [int(s) if s.isdigit() else s for s in re.split(r'(\d+)', string_)]
 
 for filename in os.listdir(DATA_DIR):
 	if('.csv' in filename):
@@ -53,7 +56,7 @@ totaloption.write("date,dateline,strike_price,callorput,open,high,close\n")
 for filename in file_data:
 	print(filename)
 
-	tmp = codecs.open('./1/'+filename,'r','big5')
+	tmp = codecs.open('./option/'+filename,'r','big5')
 	optionfile = tmp.read()
 
 
@@ -82,6 +85,9 @@ test_result.close()
 for row in csv.DictReader(test):
 	Open.append(float(row['Open']))
 	Date.append(row['Date'])
+	Close.append(float(row['Close']))
+	High.append(float(row['High']))
+	Low.append(float(row['Low']))
 test.close()
 
 
@@ -94,12 +100,16 @@ finialmoney=0
 buymoney=0
 sellmoney=0
 
+number=0
 walletmoney=0
 savemoney=0
 profit=0
 total_profit=0
 x=0
 y=0
+
+f=open('roi_result.csv','w')
+f.write("date,callorput,dateline,strike_price,buyprice,big_open,sellprice,big_close,big_hight,big_low,total_profit,outputmoney,roi\n")
 
 
 #tmptotaloption = open('./totaloption.csv')
@@ -113,15 +123,49 @@ for i in range(0,len(Labels),1):
 	else:
 		y=Open[i+10]-x
 	#datatype is from string to datetime so we can add_month
-'''	add_month = 1 我們做近月交易(就是下個月) 如果要做遠月 調整 1'''
+	#add_month = 1 我們做近月交易(就是下個月) 如果要做遠月 調整 1
 	date_after_month = datetime.datetime.strptime(Date[i+10], '%Y/%m/%d') + relativedelta(months=1)
 	#datatype is from datetime back to string so we can compare with the dateline
 
-
 	for row in csv.DictReader(open('./totaloption.csv')):
+		
 		if (y==float(row['strike_price']) and Date[i+10]==row['date'] and date_after_month.strftime("%Y%m")==row['dateline']):
 			if(Labels[i]==1 and row['callorput']=='call'):
-				if(float(row['open'])==0):
+				if(float(row['open'])==0 or float(row['close'])==0):
+					break
+				if(walletmoney<float(row['open'])):
+					outputmoney=outputmoney-(float(row['open'])-walletmoney)
+					walletmoney=walletmoney+(float(row['open'])-walletmoney)
+
+				#number=1
+				number=math.floor(walletmoney/float(row['open']))
+				buymoney=number*float(row['open'])
+				walletmoney=walletmoney-buymoney
+				if(float(row['high'])/float(row['open'])>=3):
+					sellmoney=number*(float(row['open'])*3-1)
+				else:
+					sellmoney=number*(float(row['close'])-1)
+
+				profit=sellmoney-buymoney
+				total_profit=total_profit+profit
+
+				#調整賺進來的錢要存下來多少
+				
+				if(profit>0):
+					walletmoney=walletmoney+buymoney+4*profit/4
+					savemoney=savemoney+profit*0/4
+				else:
+					walletmoney=walletmoney+sellmoney
+				
+				
+				finialmoney=walletmoney-(-outputmoney)+savemoney
+				f.write(row['date']+','+row['callorput']+','+row['dateline']+','+row['strike_price']+','+str(buymoney/number)+','+str(Open[i+10])+','+str(sellmoney/number)+','+str(Close[i+10])+','+str(High[i+10])+','+str(Low[i+10])+','+str(total_profit)+','+str(outputmoney)+','+str(-(finialmoney/outputmoney))+'\n')
+				print(row['date'],row['callorput'],row['dateline'],row['strike_price'],buymoney/number,sellmoney/number,total_profit,outputmoney,-(finialmoney/outputmoney))
+				break
+				
+			
+			elif(Labels[i]==-1 and row['callorput']=='put'):
+				if(float(row['open'])==0 or float(row['close'])==0):
 					break
 				if(walletmoney<float(row['open'])):
 					outputmoney=outputmoney-(float(row['open'])-walletmoney)
@@ -132,55 +176,28 @@ for i in range(0,len(Labels),1):
 				buymoney=number*float(row['open'])
 				walletmoney=walletmoney-buymoney
 				if (float(row['high'])/float(row['open'])>=3):
-					sellmoney=number*float(row['open'])*3
+					sellmoney=number*(float(row['open'])*3-1)
 				else:
-					sellmoney=number*float(row['close'])
+					sellmoney=number*(float(row['close'])-1)
 
 				profit=sellmoney-buymoney
 				total_profit=total_profit+profit
 
-                ''' 調整賺進來的錢要存下來多少 '''
+				#調整賺進來的錢要存下來多少
+				
 				if(profit>0):
-					walletmoney=walletmoney+buymoney+2*profit/4
-					savemoney=savemoney+profit*2/4
+					walletmoney=walletmoney+buymoney+4*profit/4
+					savemoney=savemoney+profit*0/4
 				else:
 					walletmoney=walletmoney+sellmoney
+				
 
-                print(walletmoney,outputmoney,profit)
+				finialmoney=walletmoney-(-outputmoney)+savemoney
+				f.write(row['date']+','+row['callorput']+','+row['dateline']+','+row['strike_price']+','+str(buymoney/number)+','+str(Open[i+10])+','+str(sellmoney/number)+','+str(Close[i+10])+','+str(High[i+10])+','+str(Low[i+10])+','+str(total_profit)+','+str(outputmoney)+','+str(-(finialmoney/outputmoney))+'\n')
+				print(row['date'],row['callorput'],row['dateline'],row['strike_price'],buymoney/number,sellmoney/number,total_profit,outputmoney,-(finialmoney/outputmoney))
 				break
-
-			elif(Labels[i]==-1 and row['callorput']=='put'):
-				if(float(row['open'])==0):
-					break
-				if(walletmoney<float(row['open'])):
-					outputmoney=outputmoney-(float(row['open'])-walletmoney)
-					walletmoney=walletmoney+(float(row['open'])-walletmoney)
-
-				number=1
-				#number=math.floor(walletmoney/float(row['open']))
-				buymoney=number*float(row['open'])
-				walletmoney=walletmoney-buymoney
-				if (float(row['high'])/float(row['open'])>=3):
-					sellmoney=number*float(row['open'])*3
-				else:
-					sellmoney=number*float(row['close'])
-
-				profit=sellmoney-buymoney
-				total_profit=total_profit+profit
-
-                ''' 調整賺進來的錢要存下來多少 '''
-				if(profit>0):
-					walletmoney=walletmoney+buymoney+2*profit/4
-					savemoney=savemoney+profit*2/4
-				else:
-					walletmoney=walletmoney+sellmoney
-
-                print(walletmoney,outputmoney,profit)
-				break
-            else:
-                break
-
-
+			
+f.close()
 finialmoney=walletmoney-(-outputmoney)+savemoney
 outputmoney=-outputmoney
 print "roi =",finialmoney/outputmoney
