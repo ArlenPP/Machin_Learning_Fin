@@ -57,7 +57,7 @@ for row in csv.DictReader(dowfile):
 dowfile.close()
 
 
-file = open('../../../output/40/train-data','w')
+file = open('../../../output/41/train-data','w')
 #file = open('./train-data','w')
 
 for day in range(5,len(Open),1):
@@ -231,7 +231,7 @@ for row in csv.DictReader(dowfile2):
 	price_low.append(float(row['Low']))
 dowfile2.close()
 
-file2 = open('../../../output/40/test-data','w')
+file2 = open('../../../output/41/test-data','w')
 #file2 = open('./test-data','w')
 
 
