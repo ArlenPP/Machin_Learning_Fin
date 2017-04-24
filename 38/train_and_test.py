@@ -49,7 +49,7 @@ for row in csv.DictReader(dowfile):
 	RSI6.append(str(float(row['RSI6'])))
 	RSI12.append(str(float(row['RSI12'])))
 	Openposition.append(str(float(row['Openposition'])))
-    ChangeOpenposition.append(str(float(row['ChangeOpenposition'])))
+	ChangeOpenposition.append(str(float(row['ChangeOpenposition'])))
 	price_open.append(float(row['Open']))
 	price_close.append(float(row['Close']))
 	price_high.append(float(row['High']))
@@ -58,6 +58,7 @@ dowfile.close()
 
 
 file = open('../../../output/38/train-data','w')
+#file = open('./train-data','w')
 
 for day in range(5,len(Open),1):
 
@@ -146,14 +147,14 @@ for day in range(5,len(Open),1):
 		file.write(' '+b+':'+RSI12[i])
 
 	for i in range(day-1,day-3,-1):
-        number+=1
-        b = str(number)
-        file.write(' '+b+':'+Openposition[i])
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+Openposition[i])
 
-    for i in range(day-1,day-3,-1):
-        number+=1
-        b = str(number)
-        file.write(' '+b+':'+ChangeOpenposition[i])
+	for i in range(day-1,day-3,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+ChangeOpenposition[i])
 
 	for i in range(day-1,day-6,-1):
 		number+=1
@@ -223,7 +224,7 @@ for row in csv.DictReader(dowfile2):
 	RSI6.append(str(float(row['RSI6'])))
 	RSI12.append(str(float(row['RSI12'])))
 	Openposition.append(str(float(row['Openposition'])))
-    ChangeOpenposition.append(str(float(row['ChangeOpenposition'])))
+	ChangeOpenposition.append(str(float(row['ChangeOpenposition'])))
 	price_open.append(float(row['Open']))
 	price_close.append(float(row['Close']))
 	price_high.append(float(row['High']))
@@ -231,6 +232,8 @@ for row in csv.DictReader(dowfile2):
 dowfile2.close()
 
 file2 = open('../../../output/38/test-data','w')
+#file2 = open('./test-data','w')
+
 
 
 for day in range(5,len(Open),1):
@@ -320,14 +323,14 @@ for day in range(5,len(Open),1):
 		file2.write(' '+b+':'+RSI12[i])
 
 	for i in range(day-1,day-3,-1):
-        number+=1
-        b = str(number)
-        file2.write(' '+b+':'+Openposition[i])
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+Openposition[i])
 
-    for i in range(day-1,day-3,-1):
-        number+=1
-        b = str(number)
-        file2.write(' '+b+':'+ChangeOpenposition[i])
+	for i in range(day-1,day-3,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+ChangeOpenposition[i])
 
 	for i in range(day-1,day-6,-1):
 		number+=1
