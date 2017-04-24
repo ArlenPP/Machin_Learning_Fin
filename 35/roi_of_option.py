@@ -128,11 +128,11 @@ for i in range(0,len(Labels),1):
 	#datatype is from datetime back to string so we can compare with the dateline
 
 	for row in csv.DictReader(open('./totaloption.csv')):
-		
+		if(Labels[i]==0):
+			break
 		if (y==float(row['strike_price']) and Date[i+10]==row['date'] and date_after_month.strftime("%Y%m")==row['dateline']):
-			if(Labels[i]==0):
-				break
-			elif(Labels[i]==1 and row['callorput']=='call'):
+			
+			if(Labels[i]==1 and row['callorput']=='call'):
 				if(float(row['open'])==0 or float(row['close'])==0):
 					break
 				if(walletmoney<float(row['open'])):
@@ -154,8 +154,8 @@ for i in range(0,len(Labels),1):
 				#調整賺進來的錢要存下來多少
 				
 				if(profit>0):
-					walletmoney=walletmoney+buymoney+3*profit/4
-					savemoney=savemoney+profit*1/4
+					walletmoney=walletmoney+buymoney+4*profit/4
+					savemoney=savemoney+profit*0/4
 				else:
 					walletmoney=walletmoney+sellmoney
 				
@@ -188,8 +188,8 @@ for i in range(0,len(Labels),1):
 				#調整賺進來的錢要存下來多少
 				
 				if(profit>0):
-					walletmoney=walletmoney+buymoney+3*profit/4
-					savemoney=savemoney+profit*1/4
+					walletmoney=walletmoney+buymoney+4*profit/4
+					savemoney=savemoney+profit*0/4
 				else:
 					walletmoney=walletmoney+sellmoney
 				
