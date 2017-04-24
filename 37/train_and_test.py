@@ -50,8 +50,13 @@ dowfile.close()
 
 
 file = open('../../../output/37/train-data','w')
+#file = open('./train-data','w')
 
 for day in range(5,len(Open),1):
+    for i in range(day-1,day-6,-1):
+        if((Open[i]=='0' or Open[i]=='') or (Close[i]=='0' or Close[i]=='') or (EMA5[i]=='0' or EMA5[i]=='') or (EMA10[i]=='0' or EMA10[i]=='') or (RSV9[i]=='0' or RSV9[i]=='') or (DIF[i]=='0' or DIF[i]=='') or (MACD5[i]=='0' or MACD5[i]=='') or (OSC[i]=='0' or OSC[i]=='') 
+            or (K[i]=='0' or K[i]=='') or (D[i]=='0' or D[i]=='') or (RSI6[i]=='0' or RSI6[i]=='') or (RSI12[i]=='0' or RSI12[i]=='') or (Openposition[i]=='0' or Openposition[i]=='') or (ChangeOpenposition[i]=='0' or ChangeOpenposition[i]=='')):
+            continue
 
     if price_close[day]>(price_open[day]+40):
         a='1'
@@ -200,11 +205,14 @@ for row in csv.DictReader(dowfile2):
 dowfile2.close()
 
 file2 = open('../../../output/37/test-data','w')
-
+#file2 = open('./test-data','w')
 
 
 for day in range(5,len(Open),1):
-
+    for i in range(day-1,day-6,-1):
+        if((Open[i]=='0' or Open[i]=='') or (Close[i]=='0' or Close[i]=='') or (EMA5[i]=='0' or EMA5[i]=='') or (EMA10[i]=='0' or EMA10[i]=='') or (RSV9[i]=='0' or RSV9[i]=='') or (DIF[i]=='0' or DIF[i]=='') or (MACD5[i]=='0' or MACD5[i]=='') or (OSC[i]=='0' or OSC[i]=='') 
+            or (K[i]=='0' or K[i]=='') or (D[i]=='0' or D[i]=='') or (RSI6[i]=='0' or RSI6[i]=='') or (RSI12[i]=='0' or RSI12[i]=='') or (Openposition[i]=='0' or Openposition[i]=='') or (ChangeOpenposition[i]=='0' or ChangeOpenposition[i]=='')):
+            continue
     if price_close[day]>(price_open[day]+40):
         a='1'
     elif (price_close[day]+40)<price_open[day]:
