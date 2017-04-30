@@ -65,8 +65,8 @@ for row in csv.DictReader(dowfile):
 dowfile.close()
 
 
-#file = open('../../../output/45/train-data','w')
-file = open('./train-data','w')
+file = open('../../../output/45/train-data','w')
+#file = open('./train-data','w')
 
 for day in range(5,len(Open),1):
 
@@ -88,7 +88,7 @@ for day in range(5,len(Open),1):
 		number+=1
 		b = str(number)
 		file.write(' '+b+':'+Close[i])
-		'''
+		
 	for i in range(day-1,day-3,-1):
 		number+=1
 		b = str(number)
@@ -173,7 +173,7 @@ for day in range(5,len(Open),1):
 		else:
 			label=-1
 		file.write(' '+b+':'+str(label))
-		'''
+	'''
 	for i in range(day-1,day-6,-1):
 		number+=1
 		b = str(number)
@@ -232,7 +232,7 @@ for day in range(5,len(Open),1):
 		number+=1
 		b = str(number)
 		file.write(' '+b+':'+RSV5[i])
-
+	'''
 	file.write('\n')
 file.close()
 
@@ -301,8 +301,8 @@ for row in csv.DictReader(dowfile2):
 dowfile2.close()
 
 
-#file = open('../../../output/45/test-data','w')
-file = open('./test-data','w')
+file = open('../../../output/45/test-data','w')
+#file = open('./test-data','w')
 
 
 for day in range(5,len(Open),1):
@@ -326,7 +326,7 @@ for day in range(5,len(Open),1):
 		number+=1
 		b = str(number)
 		file.write(' '+b+':'+Close[i])
-	'''
+	
 	for i in range(day-1,day-3,-1):
 		number+=1
 		b = str(number)
@@ -470,6 +470,6 @@ for day in range(5,len(Open),1):
 		number+=1
 		b = str(number)
 		file.write(' '+b+':'+RSV5[i])
-
+	'''
 	file.write('\n')
 file.close()
