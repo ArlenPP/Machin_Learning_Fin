@@ -95,14 +95,14 @@ test.close()
 
 
 
-outputmoney=0
+outputmoney=-1000
 finialmoney=0
 
 buymoney=0
 sellmoney=0
 
 number=0
-walletmoney=0
+walletmoney=1000
 savemoney=0
 profit=0
 total_profit=0
@@ -128,7 +128,7 @@ for i in range(0,len(Labels),1):
 	date_after_month = datetime.datetime.strptime(Date[i+5], '%Y/%m/%d') + relativedelta(months=1)
 	#datatype is from datetime back to string so we can compare with the dateline
 
-	for row in csv.DictReader(open('./totaloption.csv')):
+	for row in csv.DictReader(open('../../History_Option/totaloption.csv')):
 		if(Labels[i]==0):
 			break
 		if (y==float(row['strike_price']) and Date[i+5]==row['date'] and date_after_month.strftime("%Y%m")==row['dateline']):

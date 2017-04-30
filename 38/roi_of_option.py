@@ -112,7 +112,7 @@ y=0
 f=open('roi_result.csv','w')
 f.write("date,callorput,dateline,strike_price,buyprice,big_open,sellprice,big_close,big_hight,big_low,total_profit,outputmoney,roi\n")
 
-
+tmp = csv.DictReader(open('./totaloption.csv'))
 #tmptotaloption = open('./totaloption.csv')
 ''' 計算 roi '''
 for i in range(0,len(Labels),1):
@@ -127,8 +127,8 @@ for i in range(0,len(Labels),1):
 	#add_month = 1 我們做近月交易(就是下個月) 如果要做遠月 調整 1
 	date_after_month = datetime.datetime.strptime(Date[i+5], '%Y/%m/%d') + relativedelta(months=1)
 	#datatype is from datetime back to string so we can compare with the dateline
-
-	for row in csv.DictReader(open('./totaloption.csv')):
+	for row in tmp:
+		print(tmp)
 		if(Labels[i]==0):
 			break
 		if (y==float(row['strike_price']) and Date[i+5]==row['date'] and date_after_month.strftime("%Y%m")==row['dateline']):
@@ -163,7 +163,7 @@ for i in range(0,len(Labels),1):
 				
 				finialmoney=walletmoney-(-outputmoney)+savemoney
 				f.write(row['date']+','+row['callorput']+','+row['dateline']+','+row['strike_price']+','+str(buymoney/number)+','+str(Open[i+5])+','+str(sellmoney/number)+','+str(Close[i+5])+','+str(High[i+5])+','+str(Low[i+5])+','+str(total_profit)+','+str(outputmoney)+','+str(-(finialmoney/outputmoney))+'\n')
-				print(row['date'],row['callorput'],row['dateline'],row['strike_price'],buymoney/number,sellmoney/number,total_profit,outputmoney,-(finialmoney/outputmoney))
+				# print(row['date'],row['callorput'],row['dateline'],row['strike_price'],buymoney/number,sellmoney/number,total_profit,outputmoney,-(finialmoney/outputmoney))
 				break
 				
 			
@@ -197,7 +197,7 @@ for i in range(0,len(Labels),1):
 
 				finialmoney=walletmoney-(-outputmoney)+savemoney
 				f.write(row['date']+','+row['callorput']+','+row['dateline']+','+row['strike_price']+','+str(buymoney/number)+','+str(Open[i+5])+','+str(sellmoney/number)+','+str(Close[i+5])+','+str(High[i+5])+','+str(Low[i+5])+','+str(total_profit)+','+str(outputmoney)+','+str(-(finialmoney/outputmoney))+'\n')
-				print(row['date'],row['callorput'],row['dateline'],row['strike_price'],buymoney/number,sellmoney/number,total_profit,outputmoney,-(finialmoney/outputmoney))
+				# print(row['date'],row['callorput'],row['dateline'],row['strike_price'],buymoney/number,sellmoney/number,total_profit,outputmoney,-(finialmoney/outputmoney))
 				break
 			
 f.close()
