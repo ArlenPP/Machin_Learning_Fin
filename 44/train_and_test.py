@@ -51,6 +51,17 @@ for day in range(1,len(Open),1):
 	file.write(a)
 
 	number = 0
+
+	for i in range(day-1,day-2,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+Open[i])
+
+	for i in range(day-1,day-2,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+Close[i])
+
 	for i in range(day-1,day-2,-1):
 		number+=1
 		b = str(number)
@@ -101,11 +112,21 @@ for day in range(1,len(Open),1):
 	for i in range(day-1,day-2,-1):
 		number+=1
 		b = str(number)
+		file.write(' '+b+':'+three_openposition[i])
+
+	for i in range(day-1,day-2,-1):
+		number+=1
+		b = str(number)
 		if(three_openposition[i]>0):
 			label=1
 		else:
 			label=-1
 		file.write(' '+b+':'+str(label))
+
+	for i in range(day-1,day-2,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+openposition[i])
 
 	for i in range(day-1,day-2,-1):
 		number+=1
@@ -172,6 +193,17 @@ for day in range(1,len(Open),1):
 	file2.write(a)
 
 	number = 0
+	
+	for i in range(day-1,day-2,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+Open[i])
+
+	for i in range(day-1,day-2,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+Close[i])
+
 	for i in range(day-1,day-2,-1):
 		number+=1
 		b = str(number)
@@ -222,6 +254,11 @@ for day in range(1,len(Open),1):
 	for i in range(day-1,day-2,-1):
 		number+=1
 		b = str(number)
+		file2.write(' '+b+':'+three_openposition[i])
+
+	for i in range(day-1,day-2,-1):
+		number+=1
+		b = str(number)
 		if(three_openposition[i]>0):
 			label=1
 		else:
@@ -231,12 +268,16 @@ for day in range(1,len(Open),1):
 	for i in range(day-1,day-2,-1):
 		number+=1
 		b = str(number)
+		file2.write(' '+b+':'+openposition[i])
+
+	for i in range(day-1,day-2,-1):
+		number+=1
+		b = str(number)
 		if(openposition[i])>0:
 			label=1
 		else:
 			label=-1
 		file2.write(' '+b+':'+str(label))
-
 
 	file2.write('\n')
 file2.close()

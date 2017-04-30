@@ -20,7 +20,7 @@ for row in csv.DictReader(test):
 	close.append(float(row['Close']))
 	high.append(float(row['High']))
 	date.append(row['Date'])
-	low.append(row['Low'])
+	low.append(float(row['Low']))
 
 
 outputmoney=0
@@ -53,12 +53,12 @@ for i in range (0,len(labels),1):
 		number=math.floor(walletmoney/83000)
 		buymoney=number*83000
 		walletmoney=walletmoney-buymoney
-		if(low[i+5]+255<=Open[i+5]):
+		if(low[i+1]+255<=Open[i+1]):
 			sellmoney=number*(32000)
-			sellprice=Open[i+5]-255
+			sellprice=Open[i+1]-255
 		else:
-			sellmoney=(83000+(close[i+5]-Open[i+5]-1)*200)*number
-			sellprice=close[i+5]
+			sellmoney=(83000+(close[i+1]-Open[i+1]-1)*200)*number
+			sellprice=close[i+1]
 		profit=sellmoney-buymoney
 		total_profit=total_profit+profit
 
@@ -70,9 +70,9 @@ for i in range (0,len(labels),1):
 				
 
 		finialmoney=walletmoney-(-outputmoney)+savemoney
-		f.write(date[i+5]+',call,'+str(Open[i+5])+','+str(high[i+5])+','+str(close[i+5])+','+str(Open[i+5])+','+str(sellprice)+','+str(profit)+','+str(total_profit)+','+str(-(finialmoney/outputmoney))+','+str(outputmoney)+','+str(walletmoney)+','+str(number)+'\n')
+		f.write(date[i+1]+',call,'+str(Open[i+1])+','+str(high[i+1])+','+str(close[i+1])+','+str(Open[i+1])+','+str(sellprice)+','+str(profit)+','+str(total_profit)+','+str(-(finialmoney/outputmoney))+','+str(outputmoney)+','+str(walletmoney)+','+str(number)+'\n')
 		print("data\topen\tclose\ttotal_profit\troi\t")
-		print(date[i+5]+','+str(Open[i+5])+','+str(close[i+5])+','+str(total_profit)+','+str(-(finialmoney/outputmoney))+','+str(number)+','+str(outputmoney))
+		print(date[i+1]+','+str(Open[i+1])+','+str(close[i+1])+','+str(total_profit)+','+str(-(finialmoney/outputmoney))+','+str(number)+','+str(outputmoney))
 		
 
 	elif(labels[i]==-1):
@@ -84,12 +84,12 @@ for i in range (0,len(labels),1):
 		number=math.floor(walletmoney/83000)
 		buymoney=number*83000
 		walletmoney=walletmoney-buymoney
-		if(high[i+5]>=Open[i+5]+255):
+		if(high[i+1]>=Open[i+1]+255):
 			sellmoney=number*(32000)
-			sellprice=Open[i+5]+255
+			sellprice=Open[i+1]+255
 		else:
-			sellmoney=number*((Open[i+5]-close[i+5]-1)*200+83000)
-			sellprice=close[i+5]
+			sellmoney=number*((Open[i+1]-close[i+1]-1)*200+83000)
+			sellprice=close[i+1]
 		if(sellmoney<=0):
 			sellmoney=0
 		profit=sellmoney-buymoney
@@ -103,8 +103,8 @@ for i in range (0,len(labels),1):
 				
 
 		finialmoney=walletmoney-(-outputmoney)+savemoney
-		f.write(date[i+5]+',put,'+str(Open[i+5])+','+str(high[i+5])+','+str(close[i+5])+','+str(Open[i+5])+','+str(sellprice)+','+str(profit)+','+str(total_profit)+','+str(-(finialmoney/outputmoney))+','+str(outputmoney)+','+str(walletmoney)+','+str(number)+'\n')
-		print(date[i+5]+','+str(Open[i+5])+','+str(close[i+5])+','+str(total_profit)+','+str(-(finialmoney/outputmoney))+','+str(number)+','+str(outputmoney))
+		f.write(date[i+1]+',put,'+str(Open[i+1])+','+str(high[i+1])+','+str(close[i+1])+','+str(Open[i+1])+','+str(sellprice)+','+str(profit)+','+str(total_profit)+','+str(-(finialmoney/outputmoney))+','+str(outputmoney)+','+str(walletmoney)+','+str(number)+'\n')
+		print(date[i+1]+','+str(Open[i+1])+','+str(close[i+1])+','+str(total_profit)+','+str(-(finialmoney/outputmoney))+','+str(number)+','+str(outputmoney))
 
 
 f.close()
