@@ -61,7 +61,7 @@ for day in range(10,len(Open),1):
 	else:
 		a='0'
 	if(a=='1' or a=='-1'):
-		control = 3
+		control = 1
 		while control > 0:
 			control -= 1
 			file.write(a)
