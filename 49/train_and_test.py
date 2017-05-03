@@ -282,164 +282,81 @@ for day in range(10,len(Open),1):
 	else:
 		a='0'
 	
-	if(a=='1' or a=='-1'):
-		control = 3
-		while control > 0:
-			control -= 1
-			file2.write(a)
-			number = 0
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+Open[i])
+	file2.write(a)
+	number = 0
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+Open[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+Close[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+Close[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+SMA5[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+SMA5[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+SMA10[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+SMA10[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+SMA20[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+SMA20[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+SMA60[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+SMA60[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+MA5[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+MA5[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+MA10[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+MA10[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+DIF[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+DIF[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+ACD9[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+ACD9[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+OSC[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+OSC[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+K[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+K[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+D[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+D[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+RSI6[i])
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+RSI6[i])
 
-			for i in range(day-1,day-11,-1):
-				number+=1
-				b = str(number)
-				file2.write(' '+b+':'+RSI12[i])
-			file2.write('\n')
-
-	else:
-		file2.write(a)
-		number = 0
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+Open[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+Close[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+SMA5[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+SMA10[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+SMA20[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+SMA60[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+MA5[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+MA10[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+DIF[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+ACD9[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+OSC[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+K[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+D[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+RSI6[i])
-
-		for i in range(day-1,day-11,-1):
-			number+=1
-			b = str(number)
-			file2.write(' '+b+':'+RSI12[i])
-		file2.write('\n')
+	for i in range(day-1,day-11,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+RSI12[i])
+	file2.write('\n')
 file2.close()
