@@ -62,7 +62,7 @@ for day in range(5,len(Open),1):
 		a='0'
 	if(a=='1' or a=='-1'):
 		if(a=='1'):
-			control = 32
+			control = 28
 		elif(a=='-1'):
 			control = 17
 		while control > 0:
