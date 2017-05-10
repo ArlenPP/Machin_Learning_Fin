@@ -44,7 +44,7 @@ for i in range (0,len(labels),1):
 	
 	#walletmoney=walletmoney+sellmoney
 
-	if(labels[i]==1):
+	if(labels[i]==-1):
 		if(walletmoney<83000):
 			outputmoney=outputmoney-(83000-walletmoney)
 			walletmoney=walletmoney+(83000-walletmoney) 
@@ -74,7 +74,7 @@ for i in range (0,len(labels),1):
 		print(date[i+5]+','+str(Open[i+5])+','+str(close[i+5])+','+str(total_profit)+','+str(-(finialmoney/outputmoney))+','+str(number)+','+str(outputmoney))
 		
 
-	elif(labels[i]==-1):
+	elif(labels[i]==1):
 		if(walletmoney<83000):
 			outputmoney=outputmoney-(83000-walletmoney)
 			walletmoney=walletmoney+(83000-walletmoney)
