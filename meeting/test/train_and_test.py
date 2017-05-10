@@ -22,6 +22,8 @@ RSI6 = []
 RSI12 = []
 price_close= []
 price_open = []
+price_high = []
+price_low = []
 
 dowfile = open('./train.csv','r')
 
@@ -46,184 +48,117 @@ for row in csv.DictReader(dowfile):
 	RSI12.append(str(float(row['RSI12'])))
 	price_open.append(float(row['Open']))
 	price_close.append(float(row['Close']))
+	price_high.append(float(row['High']))
+	price_low.append(float(row['Low']))
 dowfile.close()
 
 
 file = open('../../../output/test/train-data','w')
-#file = open('./train-data','w')
 
 for day in range(5,len(Open),1):
 
-	if price_close[day]>price_open[day]+100:
+	if price_close[day]>(price_open[day]+50):
 		a='1'
-	elif price_close[day]+100<=price_open[day]:
+	elif (price_close[day]+50)<price_open[day]:
 		a='-1'
-	else:
+	else :
 		a='0'
-	if(a=='1' or a=='-1'):
-		if(a=='1'):
-			control = 1
-		elif(a=='-1'):
-			control = 1
-		while control > 0:
-			control -= 1
-			file.write(a)
-			number = 0
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+Open[i])
+	file.write(a)
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+Close[i])
+	number = 0
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+Open[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+SMA5[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+Close[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+SMA10[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+SMA5[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+SMA20[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+SMA10[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+SMA60[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+SMA20[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+MA5[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+SMA60[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+MA10[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+MA5[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+DIF[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+MA10[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+ACD9[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+DIF[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+OSC[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+ACD9[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+K[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+OSC[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+D[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+K[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+RSI6[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+D[i])
 
-			for i in range(day-1,day-6,-1):
-				number+=1
-				b = str(number)
-				file.write(' '+b+':'+RSI12[i])
-			file.write('\n')
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+RSI6[i])
 
-	else:
-		file.write(a)
-		number = 0
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+Open[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+RSI12[i])
 
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+Close[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+str(price_close[i]-price_open[i]))
 
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+SMA5[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+str(price_high[i]-price_open[i]))
 
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+SMA10[i])
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file.write(' '+b+':'+str(price_low[i]-price_open[i]))
 
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+SMA20[i])
-
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+SMA60[i])
-
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+MA5[i])
-
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+MA10[i])
-
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+DIF[i])
-
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+ACD9[i])
-
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+OSC[i])
-
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+K[i])
-
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+D[i])
-
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+RSI6[i])
-
-		for i in range(day-1,day-6,-1):
-			number+=1
-			b = str(number)
-			file.write(' '+b+':'+RSI12[i])
-		file.write('\n')
+	file.write('\n')
 file.close()
+
 
 
 
@@ -247,6 +182,8 @@ RSI6 = []
 RSI12 = []
 price_close= []
 price_open = []
+price_high = []
+price_low = []
 
 dowfile2 = open('./test.csv','r')
 
@@ -271,21 +208,23 @@ for row in csv.DictReader(dowfile2):
 	RSI12.append(str(float(row['RSI12'])))
 	price_open.append(float(row['Open']))
 	price_close.append(float(row['Close']))
+	price_high.append(float(row['High']))
+	price_low.append(float(row['Low']))
 dowfile2.close()
 
 file2 = open('../../../output/test/test-data','w')
-#file2 = open('./test-data','w')
+
 
 for day in range(5,len(Open),1):
 
-	if price_close[day]>price_open[day]+100:
+	if price_close[day]>(price_open[day]+50):
 		a='1'
-	elif price_close[day]+100<=price_open[day]:
+	elif (price_close[day]+50)<price_open[day]:
 		a='-1'
-	else:
+	else :
 		a='0'
-	
 	file2.write(a)
+
 	number = 0
 	for i in range(day-1,day-6,-1):
 		number+=1
@@ -361,5 +300,23 @@ for day in range(5,len(Open),1):
 		number+=1
 		b = str(number)
 		file2.write(' '+b+':'+RSI12[i])
+
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+str(price_close[i]-price_open[i]))
+
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+str(price_high[i]-price_open[i]))
+
+	for i in range(day-1,day-6,-1):
+		number+=1
+		b = str(number)
+		file2.write(' '+b+':'+str(price_low[i]-price_open[i]))
+
+
 	file2.write('\n')
 file2.close()
+
