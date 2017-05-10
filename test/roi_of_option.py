@@ -33,7 +33,7 @@ test_result = open('./test-result','r')
 #test_result = open('../../../output/33/test-result','r')
 test = open('./test.csv','r')
 
-
+'''
 #read history option 請將檔案放在同一個資料夾裡面的folder which name is "option" 
 
 file_data = [] #list of option.csv filename
@@ -75,7 +75,7 @@ totaloption.close()
 
 #read history option and make totaloption 
 
-
+'''
 
 ''' read labels '''
 for row in csv.DictReader(test_result,delimiter=' '):
