@@ -20,7 +20,7 @@ K = []
 D = []
 RSI6 = []
 RSI12 = []
-RSV = []
+RSV9 = []
 price_close= []
 price_open = []
 
@@ -45,7 +45,7 @@ for row in csv.DictReader(dowfile):
 	D.append(str(float(row['D'])))
 	RSI6.append(str(float(row['RSI6'])))
 	RSI12.append(str(float(row['RSI12'])))
-	RSV.append(str(float(row['RSV'])))
+	RSV9.append(str(float(row['RSV9'])))
 	price_open.append(float(row['Open']))
 	price_close.append(float(row['Close']))
 dowfile.close()
@@ -148,7 +148,7 @@ for day in range(5,len(Open),1):
 			for i in range(day-1,day-11,-1):
 				number+=1
 				b = str(number)
-				file.write(' '+b+':'+RSV[i])
+				file.write(' '+b+':'+RSV9[i])
 
 			file.write('\n')
 
@@ -232,7 +232,7 @@ for day in range(5,len(Open),1):
 		for i in range(day-1,day-11,-1):
 			number+=1
 			b = str(number)
-			file.write(' '+b+':'+RSV[i])
+			file.write(' '+b+':'+RSV9[i])
 		file.write('\n')
 file.close()
 
@@ -256,7 +256,7 @@ K = []
 D = []
 RSI6 = []
 RSI12 = []
-RSV = []
+RSV9 = []
 price_close= []
 price_open = []
 
@@ -281,7 +281,7 @@ for row in csv.DictReader(dowfile2):
 	D.append(str(float(row['D'])))
 	RSI6.append(str(float(row['RSI6'])))
 	RSI12.append(str(float(row['RSI12'])))
-	RSV.append(str(float(row['RSV'])))
+	RSV9.append(str(float(row['RSV9'])))
 	price_open.append(float(row['Open']))
 	price_close.append(float(row['Close']))
 dowfile2.close()
@@ -377,6 +377,6 @@ for day in range(10,len(Open),1):
 	for i in range(day-1,day-11,-1):
 		number+=1
 		b = str(number)
-		file2.write(' '+b+':'+RSV[i])
+		file2.write(' '+b+':'+RSV9[i])
 	file2.write('\n')
 file2.close()
