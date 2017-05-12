@@ -64,9 +64,9 @@ for day in range(5,len(Open),1):
 		a='0'
 	if(a=='1' or a=='-1'):
 		if(a=='1'):
-			control = 1
+			control = 37
 		elif(a=='-1'):
-			control = 1
+			control = 28
 		while control > 0:
 			control -= 1
 			file.write(a)
