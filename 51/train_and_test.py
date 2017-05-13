@@ -252,8 +252,8 @@ def CsvDataToSVMdata(TXFI,mode):
                 number+=1
                 b = str(number)
                 file.write(' '+b+':'+RSI12[i])
-    
-    file.write('\n')
+            file.write('\n')
+    file.close()
 
 train_TXFI = open('./train.csv','r')
 CsvDataToSVMdata(train_TXFI,"train")
