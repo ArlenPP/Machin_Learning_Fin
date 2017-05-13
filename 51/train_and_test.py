@@ -77,7 +77,7 @@ def CsvDataToSVMdata(TXFI,mode):
 
     
     for day in range(10,len(Open)-30,1):
-        label = "9487"
+        label = '0'
 
         for x in range(day+1,day+31,1):
             if(0.05<(price_high[x]-price_open[day])/price_open[day]):
@@ -90,9 +90,6 @@ def CsvDataToSVMdata(TXFI,mode):
                 break
 
         #UporDown(day)
-        if(label=="9487"):
-            label = '0'
-            #print("label == 9487")
         if(label=='1' or label=='-1'):
             if(label=='1'):
                 control = 1
