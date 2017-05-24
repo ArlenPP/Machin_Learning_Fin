@@ -150,251 +150,505 @@ for day in range(10,len(Open),1):
 		a='-1'
 	else:
 		a='0'
-	
-	file.write(a)
-	number = 0
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+Open[i])
+	if(a=='1' or a=='-1'):
+		if(a=='1'):
+			control = 24
+		elif(a=='-1'):
+			control = 20
+		while control > 0:
+			control -= 1
+			file.write(a)
+			number = 0
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+Open[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+Close[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+Close[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+SMA5[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+SMA5[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+SMA10[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+SMA10[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+SMA20[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+SMA20[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+SMA60[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+SMA60[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+MA5[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+MA5[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+MA10[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+MA10[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+DIF[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+DIF[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+ACD9[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+ACD9[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+OSC[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+OSC[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+K[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+K[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+D[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+D[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+RSI6[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+RSI6[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+RSI12[i])
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+RSV9[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+RSI12[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+RSV9[i])
 
-	#######
+			#######
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+Open1[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+Open1[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+Close1[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+Close1[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+SMA51[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+SMA51[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+SMA101[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+SMA101[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+SMA201[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+SMA201[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+SMA601[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+SMA601[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+MA51[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+MA51[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+MA101[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+MA101[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+DIF1[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+DIF1[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+ACD91[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+ACD91[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+OSC1[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+OSC1[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+K1[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+K1[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+D1[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+D1[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+RSI61[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+RSI61[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+RSI121[i])
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+RSV91[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+RSI121[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+RSV91[i])
 
-		######
+				######
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+Open2[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+Open2[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+Close2[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+Close2[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+SMA52[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+SMA52[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+SMA102[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+SMA102[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+SMA202[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+SMA202[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+SMA602[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+SMA602[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+MA52[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+MA52[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+MA102[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+MA102[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+DIF2[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+DIF2[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+ACD92[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+ACD92[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+OSC2[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+OSC2[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+K2[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+K2[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+D2[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+D2[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+RSI62[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+RSI62[i])
 
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+RSI122[i])
-	for i in range(day-1,day-11,-1):
-		number+=1
-		b = str(number)
-		file.write(' '+b+':'+RSV92[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+RSI122[i])
+			for i in range(day-1,day-11,-1):
+				number+=1
+				b = str(number)
+				file.write(' '+b+':'+RSV92[i])
 
-	file.write('\n')
+			file.write('\n')
+
+
+
+	else:
+		file.write(a)
+		number = 0
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+Open[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+Close[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+SMA5[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+SMA10[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+SMA20[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+SMA60[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+MA5[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+MA10[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+DIF[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+ACD9[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+OSC[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+K[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+D[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+RSI6[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+RSI12[i])
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+RSV9[i])
+
+		#######
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+Open1[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+Close1[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+SMA51[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+SMA101[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+SMA201[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+SMA601[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+MA51[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+MA101[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+DIF1[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+ACD91[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+OSC1[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+K1[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+D1[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+RSI61[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+RSI121[i])
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+RSV91[i])
+
+			######
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+Open2[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+Close2[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+SMA52[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+SMA102[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+SMA202[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+SMA602[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+MA52[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+MA102[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+DIF2[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+ACD92[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+OSC2[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+K2[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+D2[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+RSI62[i])
+
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+RSI122[i])
+		for i in range(day-1,day-11,-1):
+			number+=1
+			b = str(number)
+			file.write(' '+b+':'+RSV92[i])
+
+		file.write('\n')
 
 	
 file.close()
