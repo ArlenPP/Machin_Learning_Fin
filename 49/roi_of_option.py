@@ -127,16 +127,20 @@ for i in range(0,len(Labels),1):
 	#datatype is from string to datetime so we can add_month
 	#add_month = 1 我們做近月交易(就是下個月) 如果要做遠月 調整 1
 	date_after_month = datetime.datetime.strptime(Date[i+10], '%Y/%m/%d') + relativedelta(months=1)
+	#datetime类的weekday()方法可以获得datetime是星期几,注意weekday() 返回的是0-6是星期一到星期日
+	#if datetime.date.today().weekday() == 0: #如果是星期一的話
 	#datatype is from datetime back to string so we can compare with the dateline
 
+
 	for row in tmp:
+
 		if(Labels[i]==0):
 			break
 		if (y==float(row['strike_price']) and Date[i+10]==row['date'] and date_after_month.strftime("%Y%m")==row['dateline']):
 			
-			if(Labels[i]==1 and row['callorput']=='call'):
+			if(Labels[i]==1 and row['callorput']=='call' and datetime.datetime.strptime(Date[i+10], '%Y/%m/%d').weekday()==2):
 				if(float(row['open'])==0 or float(row['close'])==0):
-					break
+					continue
 				if(walletmoney<float(row['open'])):
 					outputmoney=outputmoney-(float(row['open'])-walletmoney)
 					walletmoney=walletmoney+(float(row['open'])-walletmoney)
@@ -168,7 +172,7 @@ for i in range(0,len(Labels),1):
 				break
 				
 			
-			elif(Labels[i]==-1 and row['callorput']=='put'):
+			elif(Labels[i]==-1 and row['callorput']=='put' and datetime.datetime.strptime(Date[i+10], '%Y/%m/%d').weekday()==2):
 				if(float(row['open'])==0 or float(row['close'])==0):
 					break
 				if(walletmoney<float(row['open'])):
@@ -190,8 +194,8 @@ for i in range(0,len(Labels),1):
 				#調整賺進來的錢要存下來多少
 				
 				if(profit>0):
-					walletmoney=walletmoney+buymoney+4*profit/4
-					savemoney=savemoney+profit*0/4
+					walletmoney=walletmoney+buymoney+2*profit/4
+					savemoney=savemoney+profit*2/4
 				else:
 					walletmoney=walletmoney+sellmoney
 				
@@ -204,6 +208,6 @@ for i in range(0,len(Labels),1):
 f.close()
 finialmoney=walletmoney-(-outputmoney)+savemoney
 outputmoney=-outputmoney
-print "roi =",finialmoney/outputmoney
+#print "roi =",finialmoney/outputmoney
 print "outputmoney =",outputmoney
 print "total_profit =",total_profit
