@@ -35,7 +35,7 @@ test = open('./test.csv','r')
 
 
 #read history option 請將檔案放在同一個資料夾裡面的folder which name is "option" 
-
+'''
 file_data = [] #list of option.csv filename
 DATA_DIR = '../../History_Option/2017' #directory of option.csv
 
@@ -74,7 +74,7 @@ for filename in file_data:
 totaloption.close()
 
 #read history option and make totaloption 
-
+'''
 
 
 ''' read labels '''
@@ -113,10 +113,13 @@ f=open('roi_result.csv','w')
 f.write("date,callorput,dateline,strike_price,buyprice,big_open,sellprice,big_close,big_hight,big_low,total_profit,outputmoney,roi\n")
 
 tmp = csv.DictReader(open('./totaloption.csv'))
+print(tmp)
 
 #tmptotaloption = open('./totaloption.csv')
 ''' 計算 roi '''
 for i in range(0,len(Labels),1):
+
+	#print(datetime.datetime.Date[i+10].weekday())
 
 	#y is call or put price
 	x=Open[i+10]%100
@@ -128,15 +131,14 @@ for i in range(0,len(Labels),1):
 	#add_month = 1 我們做近月交易(就是下個月) 如果要做遠月 調整 1
 	date_after_month = datetime.datetime.strptime(Date[i+10], '%Y/%m/%d') + relativedelta(months=1)
 	#datatype is from datetime back to string so we can compare with the dateline
-
 	for row in tmp:
-		if(Labels[i]==0):
-			break
+		if(Labels[i] == 0):
+			continue
 		if (y==float(row['strike_price']) and Date[i+10]==row['date'] and date_after_month.strftime("%Y%m")==row['dateline']):
 			
 			if(Labels[i]==1 and row['callorput']=='call'):
 				if(float(row['open'])==0 or float(row['close'])==0):
-					break
+					continue
 				if(walletmoney<float(row['open'])):
 					outputmoney=outputmoney-(float(row['open'])-walletmoney)
 					walletmoney=walletmoney+(float(row['open'])-walletmoney)

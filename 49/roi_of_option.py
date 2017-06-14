@@ -136,9 +136,9 @@ for i in range(0,len(Labels),1):
 
 		if(Labels[i]==0):
 			break
-		if (y==float(row['strike_price']) and Date[i+10]==row['date'] and date_after_month.strftime("%Y%m")==row['dateline']):
+		if (y==float(row['strike_price']) and Date[i+10]==row['date']):
 			
-			if(Labels[i]==1 and row['callorput']=='call' and datetime.datetime.strptime(Date[i+10], '%Y/%m/%d').weekday()==2):
+			if(Labels[i]==1 and row['callorput']=='call'):
 				if(float(row['open'])==0 or float(row['close'])==0):
 					continue
 				if(walletmoney<float(row['open'])):
