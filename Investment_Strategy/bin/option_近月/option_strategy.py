@@ -18,10 +18,11 @@ from option_class import txff
 ##      set up porfolio condition       ##
 
 transation_Time = 1
-train_data_feature_few_day = 10
 allin = 1
 save = 0
 price_out = 1
+StartDay = '2016/1/18'
+EndDay = '2016/12/30'
 ##====	choose do Call or Put 1 is do 0 is not do 		====##
 DoCall = 1
 DoPut = 0
@@ -80,7 +81,8 @@ def TheEed():
 
 my_porfolio = porfolio(transation_Time)
 my_test_result = test_result()
-my_txff = txff(train_data_feature_few_day)
+#my_txff = txff(train_data_feature_few_day)
+my_txff = txff(0)
 f=open('../../option_roi_result.csv','w')
 f.write("date,roi\n")
 
@@ -92,9 +94,19 @@ sellfilelist.write("buy_or_sell,sellday,id,number,buyday,buyprice,sellprice\n")
 
 my_option = list(csv.DictReader(open('../../totaloption.csv','r')))
 
+##==== 	Enter Train Test START and End Day ====##
+StartDayi = 0
+EndDayi = 0
+
+for i in range(len(my_txff.open)):
+	if(my_txff.date[i] == StartDay):
+		StartDayi = i
+	if(my_txff.date[i] == EndDay):
+		EndDayi = i
+print (StartDayi,EndDayi,EndDayi-StartDayi)
 ##====      start roi       ====##
 which = 0
-for i in range(0,len(my_test_result.label),1):
+for i in range(0,(EndDayi-StartDayi)+1,1):
 	##====      to count how many days      ====#
 	for tra in iter(my_porfolio.transation_list):
 		if(tra.haveorno == 1):
@@ -103,16 +115,16 @@ for i in range(0,len(my_test_result.label),1):
 	if(my_test_result.label[i] != 0):
 		
 		# strike_price is the price of call or put #
-		strike_price = CallorPutPrice(my_txff.open[i],my_test_result.label[i])
+		strike_price = CallorPutPrice(my_txff.open[StartDayi+i],my_test_result.label[i])
 
 		#   determine the dateline of option we buy     #
-		date_after_month = datetime.datetime.strptime(my_txff.date[i], '%Y/%m/%d') + relativedelta(months=1)
+		date_after_month = datetime.datetime.strptime(my_txff.date[StartDayi+i], '%Y/%m/%d') + relativedelta(months=1)
 		
 		#  if 10 day is comming  start find the price in my_option   #
 		for tra in iter(my_porfolio.transation_list):
-			if(tra.howmanyday == transation_Time and tra.haveorno == 1 and DoCall == 1):
+			if(tra.howmanyday == transation_Time and tra.haveorno == 1):
 				for row in my_option:
-					if(my_txff.date[i]==row['date'] and tra.strike_price == float(row['strike_price']) and tra.callorput == row['callorput'] and tra.dateline == row['dateline']):
+					if(my_txff.date[StartDayi+i]==row['date'] and tra.strike_price == float(row['strike_price']) and tra.callorput == row['callorput'] and tra.dateline == row['dateline']):
 						if(tra.Take_Profit(float(row['high']))):
 							my_porfolio.money_deposit += tra.number*(tra.sellprice-0.5)*save*50
 							my_porfolio.money_canbuy += tra.number*(tra.sellprice-0.5)*allin*50
@@ -132,8 +144,8 @@ for i in range(0,len(my_test_result.label),1):
 
 
 		for row in my_option:
-			if(strike_price == float(row['strike_price']) and my_txff.date[i] == row['date'] and date_after_month.strftime("%Y%m")==row['dateline']):
-				if(my_test_result.label[i] == 1 and row['callorput']=='call'):	
+			if(strike_price == float(row['strike_price']) and my_txff.date[StartDayi+i] == row['date'] and date_after_month.strftime("%Y%m")==row['dateline']):
+				if(my_test_result.label[i] == 1 and row['callorput']=='call' and DoCall == 1):	
 					if(my_porfolio.output_money <= 0):
 						TheEed()				
 					else:
@@ -144,7 +156,6 @@ for i in range(0,len(my_test_result.label),1):
 							my_porfolio.money_canbuy = (today_buyprice + 0.5)*50
 						
 						which = my_porfolio.WhichTransation()
-
 						my_porfolio.transation_list[which].buy(today_buyprice,my_porfolio.money_canbuy,row['date'],float(row['strike_price']),row['callorput'],row['dateline'],my_test_result.call[i])
 						my_porfolio.money_canbuy -= my_porfolio.transation_list[which].number*((today_buyprice+0.5)*50)
 						print ('buy','transation_day = '+str(row['date']),'strike_price = '+str(row['strike_price']),'number = '+str(my_porfolio.transation_list[which].number),'id = '+str(my_porfolio.transation_list[which].id),'PutCall = '+str(row['callorput']),'buyprice = '+str(today_buyprice),'output_money = '+str(my_porfolio.output_money),'money_canbuy = '+str(my_porfolio.money_canbuy))
@@ -173,7 +184,7 @@ for i in range(0,len(my_test_result.label),1):
 		for tra in iter(my_porfolio.transation_list):
 			if(tra.haveorno == 1):
 				for row in my_option:
-					if(my_txff.date[i]==row['date'] and tra.strike_price == float(row['strike_price']) and tra.callorput == row['callorput'] and tra.dateline == row['dateline']):
+					if(my_txff.date[StartDayi+i]==row['date'] and tra.strike_price == float(row['strike_price']) and tra.callorput == row['callorput'] and tra.dateline == row['dateline']):
 						if(tra.Take_Profit(float(row['high']))):
 							my_porfolio.money_deposit += tra.number*(tra.sellprice-0.5)*save*50
 							my_porfolio.money_canbuy += tra.number*(tra.sellprice-0.5)*allin*50
@@ -192,7 +203,7 @@ for i in range(0,len(my_test_result.label),1):
 		for tra in iter(my_porfolio.transation_list):
 			if(tra.haveorno == 1):
 				for row in my_option:
-					if(my_txff.date[i]==row['date'] and tra.strike_price == float(row['strike_price']) and tra.callorput == row['callorput'] and tra.dateline == row['dateline']):
+					if(my_txff.date[StartDayi+i]==row['date'] and tra.strike_price == float(row['strike_price']) and tra.callorput == row['callorput'] and tra.dateline == row['dateline']):
 						if(tra.Take_Profit(float(row['high']))):
 							my_porfolio.money_deposit += tra.number*(tra.sellprice-0.5)*save*50
 							my_porfolio.money_canbuy += tra.number*(tra.sellprice-0.5)*allin*50
@@ -209,7 +220,7 @@ for i in range(0,len(my_test_result.label),1):
 							sellfilelist.write('sell'+','+str(tra.sellday)+','+str(tra.id)+','+str(tra.number)+','+str(tra.buyday)+','+str(tra.buyprice)+','+str(tra.sellprice)+'\n')
 						break
 	##==== start write the roi file  ====##
-	f.write(str(my_txff.date[i])+','+str(ROI())+'\n')
+	f.write(str(my_txff.date[StartDayi+i])+','+str(ROI())+'\n')
 	print (ROI())
 
 TheEed()	

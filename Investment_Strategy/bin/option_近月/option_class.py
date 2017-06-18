@@ -25,7 +25,7 @@ money_allin_two = 1
 money_allin_three = 1
 ##==== 	read file 		=====##
 svm_result = csv.DictReader(open('../../test-result','r'),delimiter=' ')
-txff_raw = csv.DictReader(open('../../txff.csv','r'),delimiter=',')
+txff_raw = csv.DictReader(open('../../1txff.csv','r'),delimiter=',')
 
 ##		class define		##
 
@@ -97,7 +97,7 @@ class porfolio:
 		self.money_canbuy = init_money_canbuy
 		self.money_deposit = 0.0
 		#	append transation into transation_list
-		self.transation_list = [transation(i) for i in range(0,transation_T)]
+		self.transation_list = [transation(i) for i in range(0,transation_T+1)]
 	
 	def WhichTransation(self):
 		for tra in iter(self.transation_list):
