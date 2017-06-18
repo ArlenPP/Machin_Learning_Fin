@@ -18,14 +18,14 @@ from option_class import txff
 ##      set up porfolio condition       ##
 
 transation_Time = 1
-allin = 0.5
-save = 0.5
+allin = 1
+save = 0
 price_out = 1
 StartDay = '2013/1/2'
 EndDay = '2013/12/31'
 ##====	choose do Call or Put 1 is do 0 is not do 		====##
 DoCall = 1
-DoPut = 0
+DoPut = 1
 
 
 ##      define function     ##
