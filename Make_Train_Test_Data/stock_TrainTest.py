@@ -23,6 +23,9 @@ transation_Time = 1
 train_data_feature_few_day = 10
 on_arlen_computer = 0
 file = '53'
+
+control_call_times = 1
+control_puttimes = 1
 ##====		set up where is history option file 		====##
 dir_of_stock = './tmp_database/'
 
@@ -78,28 +81,67 @@ for my_stock in my_stock_combination.stock_list:
 ## range(i_of_startday,i_of_endday,+=1 each time)
 number = []
 number.append(int(1))
+label = '0'
+
+total = 0
+calltimes = 0
+puttimes = 0
+nonetime = 0
+
 for i in range(0,(my_stock_combination.stock_list[0].TrainEndi - my_stock_combination.stock_list[0].TrainStarti)+1,1):
-	number[0] = 1
-	for my_stock in my_stock_combination.stock_list:
-		
-		if(my_stock.stockname == '1txff.csv'):
-			HighOrLowHappened = 0
-			for x in range(transation_Time):
-				if(my_stock.High[my_stock.TrainStarti+i+x] > my_stock.Open[my_stock.TrainStarti+i]+over_x_is_high):
-					train.write('1')
-					HighOrLowHappened = 1
-					break
-				elif(my_stock.Low[my_stock.TrainStarti+i+x] < my_stock.Open[my_stock.TrainStarti+i]-over_y_is_low):
-					train.write('-1')
-					HighOrLowHappened = 1
-					break
-			if(HighOrLowHappened == 0):
-				train.write('0')
-		
+	
+	HighOrLowHappened = 0
+	for x in range(transation_Time):
+		if(my_stock_combination.stock_list[0].High[my_stock_combination.stock_list[0].TrainStarti+i+x] > (my_stock_combination.stock_list[0].Open[my_stock_combination.stock_list[0].TrainStarti+i]+over_x_is_high)):
+			label = '1'
+			HighOrLowHappened = 1
+			calltimes += 1
+			break
+		elif(my_stock_combination.stock_list[0].Low[my_stock_combination.stock_list[0].TrainStarti+i+x] < (my_stock_combination.stock_list[0].Open[my_stock_combination.stock_list[0].TrainStarti+i]-over_y_is_low)):
+			label = '-1'
+			HighOrLowHappened = 1
+			puttimes += 1
+			break
+	if(HighOrLowHappened == 0):
+		label = '0'
+		nonetime += 1
+	total += 1	
 		##==== con if is train == 1 if is test == 0 	====##
-		con = 1
-		FeatureWrite(train,train_data_feature_few_day,my_stock,i,number,con)
-	train.write('\n')
+	if(label == '1'):
+		cct = control_call_times
+		while cct>0:
+			number[0] = 1
+			train.write(label)
+			for my_stock in my_stock_combination.stock_list:
+				con = 1
+				FeatureWrite(train,train_data_feature_few_day,my_stock,i,number,con)
+			train.write('\n')
+			cct -= 1
+			
+	elif(label == '-1'):
+		cp = control_puttimes
+		while cp>0:
+			number[0] = 1
+			train.write(label)
+			for my_stock in my_stock_combination.stock_list:
+				con = 1
+				FeatureWrite(train,train_data_feature_few_day,my_stock,i,number,con)
+			train.write('\n')
+			cp -= 1
+			
+	else:
+		number[0] = 1
+		train.write(label)
+		for my_stock in my_stock_combination.stock_list:
+			con = 1
+			FeatureWrite(train,train_data_feature_few_day,my_stock,i,number,con)
+		train.write('\n')
+		
+		
+print (total, calltimes, puttimes,nonetime)
+print ('control_call_times = '+str(float(2*nonetime/calltimes)))
+print ('control_puttimes = '+str(float(2*nonetime/puttimes)))
+
 
 ##		make test 		##
 
