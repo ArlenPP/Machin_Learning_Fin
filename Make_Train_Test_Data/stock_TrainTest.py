@@ -91,7 +91,7 @@ nonetime = 0
 for i in range(0,(my_stock_combination.stock_list[0].TrainEndi - my_stock_combination.stock_list[0].TrainStarti)+1,1):
 	
 	HighOrLowHappened = 0
-	for x in range(transation_Time):
+	for x in range(transation_Time+1):
 		if(my_stock_combination.stock_list[0].High[my_stock_combination.stock_list[0].TrainStarti+i+x] > (my_stock_combination.stock_list[0].Open[my_stock_combination.stock_list[0].TrainStarti+i]+over_x_is_high)):
 			label = '1'
 			HighOrLowHappened = 1
@@ -151,7 +151,7 @@ for i in range(0,(my_stock_combination.stock_list[0].TestEndi - my_stock_combina
 		
 		if(my_stock.stockname == '1txff.csv'):
 			HighOrLowHappened = 0
-			for x in range(transation_Time):
+			for x in range(transation_Time+1):
 				if(my_stock.High[my_stock.TestStarti+i+x] > my_stock.Open[my_stock.TestStarti+i]+over_x_is_high):
 					test.write('1')
 					HighOrLowHappened = 1

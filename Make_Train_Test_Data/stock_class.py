@@ -268,7 +268,7 @@ def FeatureWrite(file,T,stock_in_my_stock_loop,i,number,c):
 	elif(c==0):
 		dayi = stock_in_my_stock_loop.TestStarti
 
-	for y in range(0,-T-1,-1):
+	for y in range(-1,-T-1,-1):
 		file.write(' '+str(number[0])+':')
 		file.write(str(stock_in_my_stock_loop.DIF[dayi+i+y]))
 		number[0] +=1
