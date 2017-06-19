@@ -495,3 +495,21 @@ def FeatureWrite(file,T,stock_in_my_stock_loop,i,number,c):
 		file.write(' '+str(number[0])+':')
 		file.write(str(stock_in_my_stock_loop.Diff_Close_SMA60[dayi+i+y]))
 		number[0] +=1
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##

@@ -166,3 +166,33 @@ for i in range(0,(my_stock_combination.stock_list[0].TestEndi - my_stock_combina
 		con = 0
 		FeatureWrite(test,train_data_feature_few_day,my_stock,i,number,con)
 	test.write('\n')
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
+##=================for change git============##
