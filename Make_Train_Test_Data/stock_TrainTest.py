@@ -12,16 +12,18 @@ from stock_class import FeatureWrite
 
 ##====    set up config 	====##
 
-train_data_startday = '2002/1/2'
-train_data_endday = '2011/12/30'
-test_data_startday = '2012/1/2'
-test_data_endday = '2012/12/28'
+train_data_startday = '2004/1/2'
+train_data_endday = '2013/12/31'
+test_data_startday = '2014/1/2'
+test_data_endday = '2014/12/31'
 
 over_x_is_high = 100
 over_y_is_low =  100
-transation_Time = 1
-train_data_feature_few_day = 10
-on_arlen_computer = 0
+##==== 0 is today,1 is today and tommorrow,etc ====##
+transation_Time = 0
+train_data_feature_few_day = 1
+make_right_result = 1
+on_arlen_computer = 1
 file = '53'
 
 control_call_times = 1
@@ -144,55 +146,45 @@ print ('control_puttimes = '+str(float(2*nonetime/puttimes)))
 
 
 ##		make test 		##
-
-for i in range(0,(my_stock_combination.stock_list[0].TestEndi - my_stock_combination.stock_list[0].TestStarti)+1,1):
-	number[0] = 1
-	for my_stock in my_stock_combination.stock_list:
-		
-		if(my_stock.stockname == '1txff.csv'):
-			HighOrLowHappened = 0
-			for x in range(transation_Time+1):
-				if(my_stock.High[my_stock.TestStarti+i+x] > my_stock.Open[my_stock.TestStarti+i]+over_x_is_high):
-					test.write('1')
-					HighOrLowHappened = 1
-					break
-				elif(my_stock.Low[my_stock.TestStarti+i+x] < my_stock.Open[my_stock.TestStarti+i]-over_y_is_low):
-					test.write('-1')
-					HighOrLowHappened = 1
-					break
-			if(HighOrLowHappened == 0):
-				test.write('0')
-		##==== con if is train == 1 if is test == 0 	====##
-		con = 0
-		FeatureWrite(test,train_data_feature_few_day,my_stock,i,number,con)
-	test.write('\n')
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
-##=================for change git============##
+if(make_right_result == 0):
+	for i in range(0,(my_stock_combination.stock_list[0].TestEndi - my_stock_combination.stock_list[0].TestStarti)+1,1):
+		number[0] = 1
+		for my_stock in my_stock_combination.stock_list:
+			
+			if(my_stock.stockname == '1txff.csv'):
+				HighOrLowHappened = 0
+				for x in range(transation_Time+1):
+					if(my_stock.High[my_stock.TestStarti+i+x] > my_stock.Open[my_stock.TestStarti+i]+over_x_is_high):
+						test.write('1')
+						HighOrLowHappened = 1
+						break
+					elif(my_stock.Low[my_stock.TestStarti+i+x] < my_stock.Open[my_stock.TestStarti+i]-over_y_is_low):
+						test.write('-1')
+						HighOrLowHappened = 1
+						break
+				if(HighOrLowHappened == 0):
+					test.write('0')
+			##==== con if is train == 1 if is test == 0 	====##
+			con = 0
+			FeatureWrite(test,train_data_feature_few_day,my_stock,i,number,con)
+		test.write('\n')
+elif(make_right_result == 1):
+	test.write('labels\n')
+	for i in range(0,(my_stock_combination.stock_list[0].TestEndi - my_stock_combination.stock_list[0].TestStarti)+1,1):
+		number[0] = 1
+		for my_stock in my_stock_combination.stock_list:
+			
+			if(my_stock.stockname == '1txff.csv'):
+				HighOrLowHappened = 0
+				for x in range(transation_Time+1):
+					if(my_stock.High[my_stock.TestStarti+i+x] > my_stock.Open[my_stock.TestStarti+i]+over_x_is_high):
+						test.write('1')
+						HighOrLowHappened = 1
+						break
+					elif(my_stock.Low[my_stock.TestStarti+i+x] < my_stock.Open[my_stock.TestStarti+i]-over_y_is_low):
+						test.write('-1')
+						HighOrLowHappened = 1
+						break
+				if(HighOrLowHappened == 0):
+					test.write('0')
+		test.write('\n')

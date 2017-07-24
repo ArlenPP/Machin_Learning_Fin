@@ -11,15 +11,15 @@ import re
 from dateutil.relativedelta import relativedelta
 
 ##		set up in and out condition		##
-takeprofit = 3.0  #3.0 6w number ==4
-stoploss = 0.8
+takeprofit = 1.3  #3.0 6w number ==4
+stoploss = 0.9
 init_output_money = 50000
 init_money_canbuy = 50000
 Max_Number = 200
 ##====	about odds 		====##
 odd_allin_one = 0.8
 odd_allin_two = 0.7
-odd_allin_three = 0.5
+odd_allin_three = 0.6
 ##====	about money 	====##
 money_allin_one = 1
 money_allin_two = 1

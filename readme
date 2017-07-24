@@ -11,3 +11,9 @@ for train
 filename:train_010115_to_123116
 
 #train vs test
+
+
+##==== 如何最TP 測試準確率 ====##
+1.確定原本的test-data的labels的1跟-1是甚麼
+2.依造原本的設定去產生right-test（透過file(Make_Train_Test_Data)裏面的stock_TrainTest.py去產生）
+3.最後透過tool_file裏面的（test_svm_odd.py去產生TP Precision）

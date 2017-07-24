@@ -24,7 +24,7 @@ price_out = 1
 StartDay = '2012/1/2'
 EndDay = '2012/12/28'
 ##====	choose do Call or Put 1 is do 0 is not do 		====##
-DoCall = 1
+DoCall = 0
 DoPut = 1
 
 
