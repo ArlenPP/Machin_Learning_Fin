@@ -25,7 +25,7 @@ StartDay = '2015/1/5'
 EndDay = '2015/12/31'
 ##====	choose do Call or Put 1 is do 0 is not do 		====##
 DoCall = 1
-DoPut = 1
+DoPut = 0
 
 
 ##      define function     ##

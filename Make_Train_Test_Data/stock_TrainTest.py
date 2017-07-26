@@ -14,8 +14,8 @@ from stock_class import FeatureWrite
 
 train_data_startday = '2004/1/2'
 train_data_endday = '2013/12/31'
-test_data_startday = '2014/1/2'
-test_data_endday = '2014/12/31'
+test_data_startday = '2016/1/4'
+test_data_endday = '2016/12/30'
 
 over_x_is_high = 100
 over_y_is_low =  100

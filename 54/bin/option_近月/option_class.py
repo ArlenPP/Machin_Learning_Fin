@@ -22,7 +22,7 @@ odd_allin_two = 0.75
 odd_allin_three = 0.5
 ##====	about money 	====##
 money_allin_one = 1
-money_allin_two = 0.8
+money_allin_two = 0.7
 money_allin_three = 0.5
 ##==== 	read file 		=====##
 svm_result = csv.DictReader(open('../../test-result','r'),delimiter=' ')

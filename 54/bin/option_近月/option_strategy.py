@@ -17,9 +17,9 @@ from option_class import txff
 
 ##      set up porfolio condition       ##
 
-transation_Time = 9
-allin = 0.8
-save = 0.2
+transation_Time = 1
+allin = 1
+save = 0
 price_out = 1
 StartDay = '2013/1/2'
 EndDay = '2013/12/31'
