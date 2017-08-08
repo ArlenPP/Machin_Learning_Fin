@@ -13,7 +13,7 @@ from stock_class import FeatureWrite
 ##====    set up config 	====##
 
 train_data_startday = '2004/1/2'
-train_data_endday = '2013/12/31'
+train_data_endday = '2005/10/31'
 test_data_startday = '2016/1/4'
 test_data_endday = '2016/12/30'
 
@@ -21,7 +21,7 @@ over_x_is_high = 100
 over_y_is_low =  100
 ##==== 0 is today,1 is today and tommorrow,etc ====##
 transation_Time = 0
-train_data_feature_few_day = 1
+train_data_feature_few_day = 3
 make_right_result = 1
 on_arlen_computer = 1
 file = '53'
