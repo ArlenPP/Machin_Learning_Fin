@@ -22,7 +22,7 @@ over_y_is_low =  100
 ##==== 0 is today,1 is today and tommorrow,etc ====##
 transation_Time = 0
 train_data_feature_few_day = 3
-make_right_result = 1
+make_right_result = 0
 on_arlen_computer = 1
 file = '53'
 
