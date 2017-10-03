@@ -11,10 +11,6 @@ import re
 from dateutil.relativedelta import relativedelta
 
 ##		set up in and out condition		##
-takeprofit = 2.5  #3.0 6w number ==4
-stoploss = 0.9
-init_output_money = 50000
-init_money_canbuy = 50000
 Max_Number = 200
 ##====	about odds 		====##
 odd_allin_one = 0.8
@@ -52,8 +48,10 @@ class transation:
 
 #====	define profolio		====#
 class profolio:
-	def __init__(self):
-		pass
+	def __init__(self,transation_T,init_money):
+		self.transation_period = transation_T
+		self.total_input_money = init_money
+		self.transation_list = [transation(i) for i in range(0,transation_T)]
 
 
 

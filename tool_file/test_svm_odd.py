@@ -29,8 +29,8 @@ class result:
 		self.put = []
 		for row in svm_result:
 			self.label.append(int(row['labels']))
-			self.call.append(float(row['1']))
-			self.put.append(float(row['-1']))
+			#self.call.append(float(row['1']))
+			#self.put.append(float(row['-1']))
 
 my_right = right()
 my_result = result()

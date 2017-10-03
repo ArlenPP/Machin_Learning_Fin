@@ -10,6 +10,8 @@ from stock_class import stock_combination
 from stock_class import FeatureWrite
 
 
+
+
 ##====    set up config 	====##
 
 train_data_startday = '2004/1/2'
