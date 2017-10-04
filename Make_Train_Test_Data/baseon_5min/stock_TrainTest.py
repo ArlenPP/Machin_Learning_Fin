@@ -14,8 +14,8 @@ from stock_class import HighLowHappened
 
 ##====    set up config 	====##
 
-train_data_startday = '2004/1/2'
-train_data_endday = '2005/10/31'
+train_data_startday = '2002/1/2'
+train_data_endday = '2011/12/30'
 test_data_startday = '2012/1/2'
 test_data_endday = '2012/12/28'
 
@@ -30,8 +30,8 @@ make_right_result = 0
 on_arlen_computer = 1
 file = '53'
 
-control_call_times = 1
-control_puttimes = 1
+control_call_times = 17
+control_puttimes = 18
 ##====		set up where is history option file 		====##
 dir_of_stock = '../tmp_database/'
 
@@ -148,12 +148,13 @@ for number in range(len(onemin_Date)):
 		
 #==== make train_label ====#
 for i in range(len(train_label_list)):
-	checkornot = 0
-	if(train_label_list[i] == 1):
+	if(train_label_list[i] == 0):
+		continue
+	elif(train_label_list[i] == 1):
 		for stock_data in my_stock_combination.stock_list:
 			if(stock_data.stockname == 'txff.csv'):
 				for x in range(control_x,onemine_endTrain,1):
-					if((datetime.datetime.strptime(stock_data.Date[stock_data.TrainStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x], '%Y/%m/%d')) and checkornot == 0):
+					if(datetime.datetime.strptime(stock_data.Date[stock_data.TrainStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x], '%Y/%m/%d')):
 						print (onemin_Date[x])
 						print (train_label_list[i])
 						control_x = x
@@ -162,18 +163,19 @@ for i in range(len(train_label_list)):
 								TodayOpen = stock_data.Open[stock_data.TrainStarti + i]
 								ThisMinHigh = onemin_High[x+y]
 								ThisMinLow = onemin_Low[x+y]
-								if(TodayOpen - stoplow > ThisMinLow and checkornot == 0):
+								if(TodayOpen - stoplow > ThisMinLow):
 									train_label_list[i] = 0
 									print (train_label_list[i])
-									checkornot = 1
-								elif(TodayOpen + over_x_is_high < ThisMinHigh and checkornot == 0):
-									checkornot = 1
+									break
+								elif(TodayOpen + over_x_is_high <= ThisMinHigh):
+									break
+						break
 
 	elif(train_label_list[i] == -1):
 		for stock_data in my_stock_combination.stock_list:
 			if(stock_data.stockname == 'txff.csv'):
 				for x in range(control_x,onemine_endTrain,1):
-					if((datetime.datetime.strptime(stock_data.Date[stock_data.TrainStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x], '%Y/%m/%d')) and checkornot == 0):
+					if(datetime.datetime.strptime(stock_data.Date[stock_data.TrainStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x], '%Y/%m/%d')):
 						print (onemin_Date[x])
 						control_x = x
 						for y in range(301):
@@ -181,16 +183,17 @@ for i in range(len(train_label_list)):
 								TodayOpen = stock_data.Open[stock_data.TrainStarti + i]
 								ThisMinHigh = onemin_High[x+y]
 								ThisMinLow = onemin_Low[x+y]
-								if(TodayOpen + stoplow < ThisMinHigh and checkornot == 0):
+								if(TodayOpen + stoplow < ThisMinHigh):
 									train_label_list[i] = 0
-									checkornot = 1
-								elif(TodayOpen - over_y_is_low > ThisMinLow and checkornot == 0):
-									checkornot = 1
+									break
+								elif(TodayOpen - over_y_is_low >+ ThisMinLow):
+									break
+						break
 	elif(train_label_list[i] == 2):
 		for stock_data in my_stock_combination.stock_list:
 			if(stock_data.stockname == 'txff.csv'):
 				for x in range(control_x,onemine_endTrain,1):
-					if((datetime.datetime.strptime(stock_data.Date[stock_data.TrainStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x], '%Y/%m/%d')) and checkornot == 0):
+					if(datetime.datetime.strptime(stock_data.Date[stock_data.TrainStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x], '%Y/%m/%d')):
 						print (onemin_Date[x])
 						control_x = x
 						for y in range(301):
@@ -198,46 +201,47 @@ for i in range(len(train_label_list)):
 								TodayOpen = stock_data.Open[stock_data.TrainStarti + i]
 								ThisMinHigh = onemin_High[x+y]
 								ThisMinLow = onemin_Low[x+y]
-								if(TodayOpen + over_x_is_high > ThisMinHigh and checkornot == 0):
+								if(TodayOpen + over_x_is_high > ThisMinHigh):
 									train_label_list[i] = 1
-									checkornot = 1
 									for z in range(301):
-										checkornot2 = 0
 										if(datetime.datetime.strptime(stock_data.Date[stock_data.TrainStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x-y+z], '%Y/%m/%d')):
 											TodayOpen = stock_data.Open[stock_data.TrainStarti + i]
 											ThisMinHigh = onemin_High[x-y+z]
 											ThisMinLow = onemin_Low[x-y+z]
-											if(TodayOpen + over_x_is_high < ThisMinHigh and checkornot2 == 0):
-												checkornot2 = 1
-											elif(TodayOpen - stoplow > ThisMinLow and checkornot2 == 0):
+											if(TodayOpen + over_x_is_high < ThisMinHigh):
+												break
+											elif(TodayOpen - stoplow > ThisMinLow):
 												train_label_list[i] = 0
-												checkornot2 = 1
+												break
+									break
 
 								elif(TodayOpen - over_y_is_low > ThisMinLow and checkornot == 0):
 									train_label_list[i] = -1
-									checkornot = 1
 									for z in range(301):
 										checkornot2 = 0
 										if(datetime.datetime.strptime(stock_data.Date[stock_data.TrainStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x-y+z], '%Y/%m/%d')):
 											TodayOpen = stock_data.Open[stock_data.TrainStarti + i]
 											ThisMinHigh = onemin_High[x-y+z]
 											ThisMinLow = onemin_Low[x-y+z]
-											if(TodayOpen + stoplow < ThisMinHigh and checkornot2 == 0):
+											if(TodayOpen + stoplow < ThisMinHigh):
 												train_label_list[i] = 0
-												checkornot2 = 1
-											elif(TodayOpen - over_y_is_low > ThisMinLow and checkornot2 == 0):
-												checkornot2 = 1
+												break
+											elif(TodayOpen - over_y_is_low > ThisMinLow):
+												break
+									break
+						break
 
 #==== make test label ====#
 
 
 for i in range(len(test_label_list)):
-	checkornot = 0
-	if(test_label_list[i] == 1):
+	if(test_label_list[i] == 0):
+		continue
+	elif(test_label_list[i] == 1):
 		for stock_data in my_stock_combination.stock_list:
 			if(stock_data.stockname == 'txff.csv'):
 				for x in range(control_x,onemine_endTest,1):
-					if((datetime.datetime.strptime(stock_data.Date[stock_data.TestStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x], '%Y/%m/%d')) and checkornot == 0):
+					if(datetime.datetime.strptime(stock_data.Date[stock_data.TestStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x], '%Y/%m/%d')):
 						print (onemin_Date[x])
 						print (test_label_list[i])
 						control_x = x
@@ -246,36 +250,40 @@ for i in range(len(test_label_list)):
 								TodayOpen = stock_data.Open[stock_data.TestStarti + i]
 								ThisMinHigh = onemin_High[x+y]
 								ThisMinLow = onemin_Low[x+y]
-								if(TodayOpen - stoplow > ThisMinLow and checkornot == 0):
+								if(TodayOpen - stoplow > ThisMinLow):
 									test_label_list[i] = 0
 									print (test_label_list[i])
-									checkornot = 1
-								elif(TodayOpen + over_x_is_high < ThisMinHigh and checkornot == 0):
-									checkornot = 1
+									break
+								elif(TodayOpen + over_x_is_high < ThisMinHigh):
+									break
+						break
 
 	elif(test_label_list[i] == -1):
 		for stock_data in my_stock_combination.stock_list:
 			if(stock_data.stockname == 'txff.csv'):
 				for x in range(control_x,onemine_endTest,1):
-					if((datetime.datetime.strptime(stock_data.Date[stock_data.TestStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x], '%Y/%m/%d')) and checkornot == 0):
+					if(datetime.datetime.strptime(stock_data.Date[stock_data.TestStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x], '%Y/%m/%d')):
 						print (onemin_Date[x])
+						print (test_label_list[i])
 						control_x = x
 						for y in range(301):
 							if(datetime.datetime.strptime(stock_data.Date[stock_data.TestStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x+y], '%Y/%m/%d')):
 								TodayOpen = stock_data.Open[stock_data.TestStarti + i]
 								ThisMinHigh = onemin_High[x+y]
 								ThisMinLow = onemin_Low[x+y]
-								if(TodayOpen + stoplow < ThisMinHigh and checkornot == 0):
+								if(TodayOpen + stoplow < ThisMinHigh):
 									test_label_list[i] = 0
-									checkornot = 1
-								elif(TodayOpen - over_y_is_low > ThisMinLow and checkornot == 0):
-									checkornot = 1
+									break
+								elif(TodayOpen - over_y_is_low > ThisMinLow):
+									break
+						break
 	elif(test_label_list[i] == 2):
 		for stock_data in my_stock_combination.stock_list:
 			if(stock_data.stockname == 'txff.csv'):
 				for x in range(control_x,onemine_endTest,1):
-					if((datetime.datetime.strptime(stock_data.Date[stock_data.TestStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x], '%Y/%m/%d')) and checkornot == 0):
+					if(datetime.datetime.strptime(stock_data.Date[stock_data.TestStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x], '%Y/%m/%d')):
 						print (onemin_Date[x])
+						print (test_label_list[i])
 						control_x = x
 						for y in range(301):
 							if(datetime.datetime.strptime(stock_data.Date[stock_data.TestStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x+y], '%Y/%m/%d')):
@@ -284,33 +292,32 @@ for i in range(len(test_label_list)):
 								ThisMinLow = onemin_Low[x+y]
 								if(TodayOpen + over_x_is_high > ThisMinHigh and checkornot == 0):
 									test_label_list[i] = 1
-									checkornot = 1
 									for z in range(301):
-										checkornot2 = 0
 										if(datetime.datetime.strptime(stock_data.Date[stock_data.TestStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x-y+z], '%Y/%m/%d')):
 											TodayOpen = stock_data.Open[stock_data.TestStarti + i]
 											ThisMinHigh = onemin_High[x-y+z]
 											ThisMinLow = onemin_Low[x-y+z]
-											if(TodayOpen + over_x_is_high < ThisMinHigh and checkornot2 == 0):
-												checkornot2 = 1
-											elif(TodayOpen - stoplow > ThisMinLow and checkornot2 == 0):
+											if(TodayOpen + over_x_is_high < ThisMinHigh):
+												break
+											elif(TodayOpen - stoplow > ThisMinLow):
 												test_label_list[i] = 0
-												checkornot2 = 1
+												break
+									break
 
 								elif(TodayOpen - over_y_is_low > ThisMinLow and checkornot == 0):
 									test_label_list[i] = -1
-									checkornot = 1
 									for z in range(301):
-										checkornot2 = 0
 										if(datetime.datetime.strptime(stock_data.Date[stock_data.TestStarti + i], '%Y/%m/%d') == datetime.datetime.strptime(onemin_Date[x-y+z], '%Y/%m/%d')):
 											TodayOpen = stock_data.Open[stock_data.TestStarti + i]
 											ThisMinHigh = onemin_High[x-y+z]
 											ThisMinLow = onemin_Low[x-y+z]
-											if(TodayOpen + stoplow < ThisMinHigh and checkornot2 == 0):
+											if(TodayOpen + stoplow < ThisMinHigh):
 												test_label_list[i] = 0
-												checkornot2 = 1
-											elif(TodayOpen - over_y_is_low > ThisMinLow and checkornot2 == 0):
-												checkornot2 = 1
+												break
+											elif(TodayOpen - over_y_is_low > ThisMinLow):
+												break
+									break
+						break
 
 total = 0
 calltimes = 0
