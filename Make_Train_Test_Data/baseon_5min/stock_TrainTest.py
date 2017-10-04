@@ -85,8 +85,9 @@ for my_stock in my_stock_combination.stock_list:
 	print my_stock.stockname
 ##====		make train 		====##
 ## range(i_of_startday,i_of_endday,+=1 each time)
-number = []
-number.append(int(1))
+#number = []
+#number.append(int(1))
+
 train_label_list = []
 test_label_list = []
 
@@ -144,6 +145,7 @@ for number in range(len(onemin_Date)):
 		onemine_endTest = number + 301
 		print (onemine_endTest)
 		break
+		
 #==== make train_label ====#
 for i in range(len(train_label_list)):
 	checkornot = 0
@@ -321,10 +323,11 @@ for i in range(len(train_label_list)):
 	elif(train_label_list[i] == -1):
 		puttimes += 1
 	elif(train_label_list[i] == 0):
-		nonetime = += 1
+		nonetime += 1
 	total += 1
 
-
+number = []
+number.append(int(1))
 
 for i in range(0,(my_stock_combination.stock_list[0].TrainEndi - my_stock_combination.stock_list[0].TrainStarti)+1,1):	
 	##==== con if is train == 1 if is test == 0 	====##
