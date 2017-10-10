@@ -12,7 +12,7 @@ from dateutil.relativedelta import relativedelta
 
 ##		set up in and out condition		##
 takeprofit = 2.5  #3.0 6w number ==4
-stoploss = 0.9
+stoploss = 0
 init_output_money = 50000
 init_money_canbuy = 50000
 Max_Number = 200

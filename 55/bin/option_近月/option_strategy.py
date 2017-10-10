@@ -20,12 +20,12 @@ from option_class import txff
 transation_Time = 1
 allin = 1
 save = 0
-price_out = 1
+price_out = 2
 StartDay = '2014/1/2'
 EndDay = '2014/12/31'
 ##====	choose do Call or Put 1 is do 0 is not do 		====##
 DoCall = 1
-DoPut = 0
+DoPut = 1
 
 
 ##      define function     ##

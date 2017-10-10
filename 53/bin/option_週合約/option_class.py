@@ -11,19 +11,19 @@ import re
 from dateutil.relativedelta import relativedelta
 
 ##		set up in and out condition		##
-takeprofit = 1.8  #3.0 6w number ==4
-stoploss = 0.75
+takeprofit = 5 #3.0 6w number ==4
+stoploss = 0
 init_output_money = 50000
-init_money_canbuy = 50000
+init_money_canbuy = 0
 Max_Number = 200
 ##====	about odds 		====##
-odd_allin_one = 0.8
-odd_allin_two = 0.75
-odd_allin_three = 0.5
+odd_allin_one = 1
+odd_allin_two = 0.5
+odd_allin_three = 0.3
 ##====	about money 	====##
 money_allin_one = 1
-money_allin_two = 0.7
-money_allin_three = 0.5
+money_allin_two = 1
+money_allin_three = 1
 ##==== 	read file 		=====##
 svm_result = csv.DictReader(open('../../test-result','r'),delimiter=' ')
 txff_raw = csv.DictReader(open('../../1txff.csv','r'),delimiter=',')
